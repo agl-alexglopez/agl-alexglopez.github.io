@@ -3,9 +3,9 @@ layout: default
 title: Home
 ---
 
-# Welcome to My Blog
+# My Open Source Learnings
 
-Here I document computer science and software development topics I am learning.
+This blog is a documentation of valuable lessons I have learned and new ideas I am exploring. The site and its posts aim to be minimal in design, free of distraction, and full of information. Please explore the posts below that interest you.
 
 ## Posts
 

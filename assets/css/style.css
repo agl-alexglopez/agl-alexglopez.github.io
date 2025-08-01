@@ -52,3 +52,17 @@ p code {
   border-radius: 3px;
 }
 
+table {
+  border-collapse: collapse;
+  width: 100%; /* optional */
+}
+
+table, th, td {
+  border: 1px solid #ccc;
+}
+
+th, td {
+  padding: 0.5rem;
+  text-align: left;
+}
+
