@@ -1,13 +1,25 @@
 ---
 layout: post
-title: "Rosetta Stones and Mazes 0"
+title: "Rosetta Stones and Mazes: The Premise"
 date: 2025-08-01
 series: "Rosetta Stones and Mazes"
 ---
 
-## Rosetta Stones and Mazes 0 
+## Rosetta Stones and Mazes: The Premise
+
+## Outline
+
+By the end of the article the reader will
+
+- [know what "Rosetta Stone" means in the context of programming](#rosetta-stone-programs). 
+- [understand how a word counting program meets the needs of a "Rosetta Stone" program](#word-counting).
+- [have the information needed to attempt maze building and solving](#a-maze-program).
+
+## Rosetta Stone Programs
 
 The first time I heard the phrase "Rosetta Stone" in the context of programming was in an introductory programming course. Stanford University Professor [Nick Parlante](https://cs.stanford.edu/people/nick/) used this phrase in a class full of burgeoning computer scientists taking his CS106A course to describe a program that helps one learn a new programming language quickly. The program should never change as one seeks to implement it with different languages and it should attempt to cover a decent range of features from the language one seeks to learn.
+
+### Word Counting
 
 Professor Parlante's Rosetta Stone was a word count program. The requirements were roughly as follows:
 
@@ -56,6 +68,8 @@ Wikipedia gives the following definition for a [Maze](https://en.wikipedia.org/w
 > A maze is a path or collection of paths, typically from an entrance to a goal. The word is used to refer both to branching tour puzzles through which the solver must find a route, and to simpler non-branching ("unicursal") patterns that lead unambiguously through a convoluted layout to a goal.
 
 For the purposes of this article, and those that follow, we will consider unicursal mazes. Specifically, we will be most interested in perfect mazes: mazes for which there are no loops and a path exists between any two locations. 
+
+### A Maze Program
 
 These types of mazes allow us to implement ideas from tree and graph theory which further increases the value of the program for learning purposes. The problem statement for this program is as follows.
 

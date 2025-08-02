@@ -1,15 +1,27 @@
-/* Monaspace Neon Regular */
+/*───────────────────────────────────────────────────────────
+  1. Load Monaspace Neon as a variable font for proportional use
+───────────────────────────────────────────────────────────*/
 @font-face {
   font-family: 'Monaspace Neon';
-  src: url('../fonts/MonaspaceNeon-Regular.woff2') format('woff2'),
-       url('../fonts/MonaspaceNeon-Regular.woff')  format('woff');
-  font-weight: 400;
+  src: url("../fonts/'MonaspaceNeonVarVF[wght,wdth,slnt].woff2'") format("woff2"),
+       url("../fonts/'MonaspaceNeonVarVF[wght,wdth,slnt].woff'")  format("woff");
+  /*  
+    This is the variable‐width cut:  
+    – MONO axis = 0 (proportional) by default  
+    – Supports full weight/stretch/slant ranges  
+  */
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
   font-style: normal;
   font-display: swap;
 }
 
+/*───────────────────────────────────
+  2. Base typography for your site
+────────────────────────────────────*/
 body {
   font-family: 'Monaspace Neon', 'Inter', sans-serif;
+  /* here MONO axis stays at its default (0) → proportional letters */
   line-height: 1.6;
   max-width: 38em;
   margin: 2em auto;
@@ -17,24 +29,24 @@ body {
   color: #111;
 }
 
-/* Headings */
 h1, h2, h3, h4 {
-  font-weight: 600;
+  font-weight: 600; /* picks a bolder instance from the variable font */
   margin-top: 1.5em;
 }
 
+/*──────────────────────────────────────────────────
+  3. Blockquotes, images, tables — structural elements
+───────────────────────────────────────────────────*/
 blockquote {
-  background-color: #F8F8F8;
-  border-left: 1px solid;
+  background-color: #f8f8f8;
+  border-left: 4px solid #ccc;
   margin: 1.6em 10%;
-  padding: .75em 1em;
+  padding: 0.75em 1em;
 }
-
 blockquote p:last-child {
-  margin-bottom: 0;  
+  margin-bottom: 0;
 }
 
-/* Images: responsive and centered */
 img {
   display: block;
   max-width: 100%;
@@ -42,57 +54,61 @@ img {
   margin: 1em auto;
 }
 
-/* Code blocks */
-pre {
-  background: #f5f5f5;
-  padding: 0.75em;
-  overflow-x: auto;
-  border-radius: 4px;
-}
-
-code {
-  font-family: 'Monaspace Neon', 'Source Code Pro', monospace;
-  font-feature-settings: 'calt' 1;
-  font-size: 0.95em;
-}
-
-/* Inline code */
-p code {
-  background: #eee;
-  padding: 0.2em 0.4em;
-  border-radius: 3px;
-}
-
 table {
   border-collapse: collapse;
-  width: 100%; /* optional */
+  width: 100%;
 }
-
 table, th, td {
   border: 1px solid #ccc;
 }
-
 th, td {
   padding: 0.5rem;
   text-align: left;
 }
 
-/* Series Posts Navigation */
+/*─────────────────────────────────────────
+  4. Code blocks & inline code (monospace)
+──────────────────────────────────────────*/
+pre, code {
+  /* switch MONO axis to 1 → true monospaced grid */
+  font-family: 'Monaspace Neon', ui-monospace, monospace;
+  font-variation-settings: "MONO" 1;
+  /* enable contextual alternates for box-drawing smoothing */
+  font-feature-settings: "calt" 1, "liga" 1, "ss01" 1, "ss02" 1; 
+}
 
+/* block code */
+pre {
+  background: #f5f5f5;
+  padding: 0.75em;
+  overflow-x: auto;
+  border-radius: 4px;
+  line-height: 1;         /* tight, for accurate box-drawing */
+  letter-spacing: 0;      /* no extra horizontal gap */
+}
+
+/* inline code */
+p code {
+  font-size: 0.95em;
+  background: #eee;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+}
+
+/*─────────────────────────────────────────
+  5. Series-post navigation styling
+──────────────────────────────────────────*/
 .series-nav {
   display: flex;
   justify-content: space-between;
   margin: 2em 0;
   font-size: 0.9rem;
 }
-
 .series-nav a {
   text-decoration: none;
   color: var(--link-color, #0366d6);
 }
-
 .series-nav a:hover {
   text-decoration: underline;
 }
-
 

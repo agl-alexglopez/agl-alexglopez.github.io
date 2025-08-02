@@ -5,7 +5,7 @@ title: Home
 
 # My Open Source Learnings
 
-This blog is a documentation of valuable lessons I have learned and new ideas I am exploring. The site and its posts aim to be minimal in design, free of distractions, and full of information. Please check out any posts below that interest you.
+This blog is a documentation of valuable lessons I have learned and new ideas I am exploring. The site and its posts aim to be minimal in design, free from distractions, and full of information. Please check out any posts below that interest you.
 
 ## Posts
 
