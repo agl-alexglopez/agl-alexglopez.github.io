@@ -23,6 +23,17 @@ h1, h2, h3, h4 {
   margin-top: 1.5em;
 }
 
+blockquote {
+  background-color: #F8F8F8;
+  border-left: 1px solid;
+  margin: 1.6em 10%;
+  padding: .75em 1em;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;  
+}
+
 /* Images: responsive and centered */
 img {
   display: block;
