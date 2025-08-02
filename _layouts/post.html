@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <!-- Your CSS -->
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <!-- Rouge syntax highlighting theme -->
+  <link rel="stylesheet" href="{{ '/assets/css/syntax.css'  | relative_url }}">
+</head>
+<body>
+  <header>
+    <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+    {% include series-nav.html %}
+  </header>
+
+  <main>
+    {{ content }}
+  </main>
+
+  <footer>
+    {% include series-nav.html %}
+    <p>© {{ site.time | date: '%Y' }} {{ site.title }}</p>
+  </footer>
+</body>
+</html>

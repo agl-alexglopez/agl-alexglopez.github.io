@@ -1,18 +1,19 @@
 ---
-title: Rosetta Stones and Mazes (0)
+layout: post
+title: "Rosetta Stones and Mazes 0"
 date: 2025-08-01
+series: "Rosetta Stones and Mazes"
 ---
 
-## Rosetta Stones and Mazes (0) 
+## Rosetta Stones and Mazes 0 
 
-*This is 0th article in the "Rosetta Stones and Mazes" series.*
-
-Stanford University Professor Nick Parlante once described his "Rosetta Stone" program to a class full of burgeoning computer scientists in his CS106A course taught in Python. He claimed such a program aims to help one learn a new programming language quickly. The program should always remain the same and it should attempt to cover a decent range of the language one seeks to learn.
+The first time I heard the phrase "Rosetta Stone" in the context of programming was in an introductory programming course. Stanford University Professor [Nick Parlante](https://cs.stanford.edu/people/nick/) used this phrase in a class full of burgeoning computer scientists taking his CS106A course to describe a program that helps one learn a new programming language quickly. The program should never change as one seeks to implement it with different languages and it should attempt to cover a decent range of features from the language one seeks to learn.
 
 Professor Parlante's Rosetta Stone was a word count program. The requirements were roughly as follows:
 
 - Accept any text file as input.
 - Gather all counts of individual words in the text.
+- Words should be cleaned up and normalized to lowercase characters if applicable.
 - Report various traits of this data as specified by command line parameters.
   - Report top N most frequent words where N is given.
   - Report last N most frequent words where N is given.
@@ -37,7 +38,7 @@ However, I think for those in the middle of that spectrum, those of us who need 
 |Command Line Arguments|Type Creation|
 |Functions|Interface Design|
 |Tests|Trees|
-||Stacks|
+|Strings|Stacks|
 ||Heaps|
 ||Queues|
 ||Graphs|
@@ -56,17 +57,20 @@ Wikipedia gives the following definition for a [Maze](https://en.wikipedia.org/w
 
 For the purposes of this article, and those that follow, we will consider unicursal mazes. Specifically, we will be most interested in perfect mazes: mazes for which there are no loops and a path exists between any two locations. 
 
-These types of mazes allow us to implement ideas from tree and graph theory which further increases the value of the program. The problem statement for this program is as follows.
+These types of mazes allow us to implement ideas from tree and graph theory which further increases the value of the program for learning purposes. The problem statement for this program is as follows.
 
 - Generate a perfect maze.
-  - The maze dimensions should be allowed to be specified as arguments to the program.
+  - The maze dimensions may be provided at the command line if they differ from the defaults.
   - Minimum and maximum sizes may be chosen by the programmer.
-  - The maze paths and walls should be discernible from the terminal. Choose characters wisely.
+  - The maze paths and walls should be discernible and aesthetically from the terminal. Choose characters wisely.
 - Output the maze building process to the terminal, ideally in real time.
 - Place a start and finish square within the built maze.
 - Output the solving process to the terminal, ideally in real time.
 
-I choose the terminal as the display medium for this program because it is essential to most programming languages' input and output systems. One could choose to create an application with a window for this task, more in the style of game development, but the goal is to quickly get up and running with immediate feedback on the program. The terminal is the simplest tool for such a goal. However, this program could be easily extended to pursue a windowed implementation (remember a high complexity ceiling is a good thing).
+I choose the terminal as the display medium for this program because it is essential to most programming languages' input and output systems. One could choose to create an application with a window for this task, more in the style of game development, but the goal is to quickly get up and running with immediate feedback on the program. The terminal is the simplest tool for such a goal. However, this program could be easily extended to pursue a windowed implementation (remember a high complexity ceiling is a good thing for a Rosetta Stone program).
 
-In the remainder of this series we will explore how to approach this Rosetta Stone program in such a way that we hit all the points from the earlier table. Before continuing the series, now would be a good time to attempt this program. The problem statement is somewhat open ended which leaves plenty of opportunity for creativity and research. After attempting to tackle the problem, explore the remainder of the series for tips on program design choices that maximize the programming language features we encounter.
+## Try for Yourself
 
+In the remainder of this series we will explore how to approach this Rosetta Stone program in such a way that we hit all the points from the earlier table. Before continuing the series, now would be a good time to attempt this program. The problem statement is somewhat open ended which leaves plenty of opportunity for creativity and research. 
+
+If you would rather read on, the remainder of articles will not spoil how to implement the algorithms and logic of building and solving a maze. Future articles will simply discuss one possible design approach to maze paths, walls, builders, and solvers such that your implementations are fun and efficient.

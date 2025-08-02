@@ -77,3 +77,22 @@ th, td {
   text-align: left;
 }
 
+/* Series Posts Navigation */
+
+.series-nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 2em 0;
+  font-size: 0.9rem;
+}
+
+.series-nav a {
+  text-decoration: none;
+  color: var(--link-color, #0366d6);
+}
+
+.series-nav a:hover {
+  text-decoration: underline;
+}
+
+
