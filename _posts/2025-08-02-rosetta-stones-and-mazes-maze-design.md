@@ -172,7 +172,37 @@ pub fn wall_char(square: Square) -> char {
 
 #### One Array One Maze
 
-Let's finally add two more pieces of information and represent a maze.
+Because the maze conceptually represents a grid it might be tempting to create a multi-dimensional array.
+
+```rust
+pub struct Maze {
+    pub buf : Vec<Vec<Square>>,
+    pub rows: i32,
+    pub cols: i32,
+}
+```
+
+I would actually recommend flattening this out to be a single array.
+
+```rust
+pub struct Maze {
+    pub buf : Vec<Square>,
+    pub rows: i32,
+    pub cols: i32,
+}
+```
+
+And then we can use multiplication and addition to emulate the row and column based access while keeping everything in one allocation.
+
+```rust
+impl Maze {
+    pub fn get(&self, row: i32, col: i32) -> Square {
+        self.buf[(row * self.cols + col) as usize]
+    }
+}
+```
+
+Your maze object is now ready to go. Modify the design to fit your needs and preferences.
 
 #### Test the Walls
 
@@ -180,7 +210,7 @@ Your task is to now figure out how you will update squares to reflect changes in
 
 ![box-draw-grid](/assets/images/box-draw-grid.png)
 
-If the corners look correct, you have probably set up the wall connecting logic properly.
+If the corners look correct, you have probably set up the wall connecting logic properly. That's it in terms of building! Now you have all the pieces in place to try your hand at implementing building however you see fit. Check out the tips at the end if you get stuck.
 
 ## Implementation Tips
 
@@ -205,4 +235,15 @@ There are other details to consider, such as if you have already "built" or "con
 
 ### To Bit or Not to Bit
 
-Major portions of this post are dedicated to bit manipulation and encoding. What if your language does not have these capabilities or you don't think the bit manipulations are worth your time? There are other strategies you can use but I would recommend sticking with the core wall logic and create a higher level `enum`-like or `struct`-like solution to this problem. Simply select a design that is more explicit but not as space efficient. How squares are represented should make little difference to the higher level builder and solver algorithms, as long as the squares hold the needed information that can be obtained via an interface.
+Major portions of this post are dedicated to bit manipulation and encoding. What if your language does not have these capabilities or you don't think the bit manipulations are worth your time? There are other strategies you can use but I would recommend sticking with the core wall logic and create a higher level `enum`-like or `struct`-like solution to this problem. The core concepts I introduced could work exactly the same with a less space efficient approach. Here is how I might do it in Rust.
+
+```rust
+pub struct Square {
+    start : bool,
+    finish : bool,
+    path : bool,
+    wall_piece : char,    
+}
+```
+
+You can probably imagine many ways to model squares if you do not wish to use bit manipulation.
