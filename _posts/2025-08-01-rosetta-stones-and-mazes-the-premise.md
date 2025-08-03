@@ -9,7 +9,7 @@ series: "Rosetta Stones and Mazes"
 
 ## Outline
 
-By the end of the article the reader will
+By the end of this article readers will
 
 - [know what "Rosetta Stone" means in the context of programming](#rosetta-stone-programs). 
 - [understand how a word counting program meets the needs of a "Rosetta Stone" program](#word-counting).
