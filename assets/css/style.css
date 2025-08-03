@@ -72,8 +72,7 @@ th, td {
 ──────────────────────────────────────────*/
 pre, code {
   /* switch MONO axis to 1 → true monospaced grid */
-  font-family: 'Monaspace Neon', ui-monospace, monospace;
-  font-variation-settings: 'MONO' 1;
+  font-family: 'Monaspace Neon Mono', ui-monospace, monospace;
   /* enable contextual alternates for box-drawing smoothing */
   font-feature-settings: 'calt' 1, 'ss01' 1, 'ss02' 1; 
 }

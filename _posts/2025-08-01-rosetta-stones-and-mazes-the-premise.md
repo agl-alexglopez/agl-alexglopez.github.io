@@ -7,7 +7,7 @@ series: "Rosetta Stones and Mazes"
 
 ## Prerequisites
 
-Before starting readers should
+Before starting, readers should
 
 - [have a basic understanding of at least one programming language](https://en.wikipedia.org/wiki/Programming_language).
 - [understand basic file input and output for a programming language](https://en.wikipedia.org/wiki/Input/output).
@@ -15,7 +15,7 @@ Before starting readers should
 
 ## Outline
 
-By the end of this article readers will
+By the end of this post, readers will
 
 - [know what "Rosetta Stone" means in the context of programming](#rosetta-stone-programs). 
 - [understand how a word counting program meets the needs of a "Rosetta Stone" program](#word-counting).

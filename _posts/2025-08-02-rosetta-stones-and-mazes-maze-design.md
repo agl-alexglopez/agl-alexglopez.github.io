@@ -7,7 +7,7 @@ series: "Rosetta Stones and Mazes"
 
 ## Prerequisites
 
-Before starting readers should
+Before starting, readers should
 
 - [be familiar with the basics of their computer terminal and its character printing](https://en.wikipedia.org/wiki/Computer_terminal).
 - [understand the basics of fonts and how special fonts are needed in order to print some icons, glyphs, and Unicode characters](https://www.nerdfonts.com/)
@@ -16,7 +16,7 @@ Before starting readers should
 
 ## Outline
 
-By the end of this article readers will
+By the end of this post, readers will
 
 - [understand the grid of most terminals](#the-terminal-grid).
 - [be familiar with helpful Unicode characters for maze building](#box-drawing-characters).
@@ -112,10 +112,9 @@ If we count our bits in this diagram starting from right at 0 to left at 31, [re
 
 The [bit twiddling](https://graphics.stanford.edu/~seander/bithacks.html) readers may already see where this is going, but if we count the number of box-drawing characters we have we see there are 15. Let's add a character that will represent a wall that has no other walls around it to bring that count up to **16**. The number 16 is significant because that is how many values can be represented with 4 bits, if we include 0.
 
-```txt
-0   1   2   3   4   5   6   7   8   9   10  11  12  13  14  15
-■   ─   │   ┌   ┐   └   ┘   ├   ┤   ┬   ┴   ┼   ╴   ╵   ╶   ╷
-```
+|0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|
+|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
+|■|─|│|┌|┐|└|┘|├|┤|┬|┴|┼|╴|╵|╶|╷|
 
 If the `Square` is a wall it will be responsible for telling us if another wall exists in the neighboring cell to the **North**, **East**, **South**, or **West**. In fact, let's help our `WallLine` out by making those cardinal directions constants.
 
@@ -213,7 +212,7 @@ Your maze object is now ready to go. Modify the design to fit your needs and pre
 
 #### Test the Walls
 
-Your task is to now figure out how you will update squares to reflect changes in the surrounding walls during path carving or wall adding algorithms and print that to the terminal in your chosen language. To check if you have correctly set up this logic I find it easiest to start with a path carving algorithm. The initial state of the maze should be all walls which will look like this.
+Your task is to now figure out how you will update squares to reflect changes in the surrounding walls during path carving or wall adding algorithms. Then, print that to the terminal in your chosen language. To check if you have correctly set up this logic I find it easiest to start with a path carving algorithm. The initial state of the maze should be all walls which will look like this.
 
 ![box-draw-grid](/assets/images/box-draw-grid.png)
 
@@ -221,7 +220,7 @@ If the corners look correct, you have probably set up the wall connecting logic 
 
 ## Implementation Tips
 
-As promised, I will not outline how to fully implement maze building or solving. However, in my experience there are certain facts to be aware of that make understanding the maze design much simpler. This will allow you to get to the fun stuff faster; but you are free to try to figure this out on your own. 
+As promised, I will not outline how to fully implement maze building or solving. However, in my experience there are certain facts to be aware of that make the process simpler. This will allow you to get to the fun stuff faster; but you are free to try to figure this out on your own. 
 
 ### Obtain Algorithms
 
@@ -232,9 +231,40 @@ If you are struggling to come up algorithms to build mazes here are some resourc
 - [Jamis Buck](https://weblog.jamisbuck.org/) is a great resource for maze building ideas.
 - [Wikipedia](https://en.wikipedia.org/wiki/Maze_generation_algorithm) can get you started on the basics.
 
+### Cursor Control
+
+Whether you choose to build the maze in memory and then print it all at once, or come up with some real-time rendering system to watch the build process, you will need to move the cursor. In Rust this can be achieved with crates like [crossterm](https://github.com/crossterm-rs/crossterm). 
+
+```rust
+// Queue the command so setting the cursor position does NOT forcefully flush for caller.
+pub fn set_cursor_position(p: maze::Point, offset: maze::Offset) {
+    stdout()
+        .queue(cursor::MoveTo(
+            (p.col + offset.add_cols) as u16,
+            (p.row + offset.add_rows) as u16,
+        ))
+        .expect("Could not move cursor, terminal may be incompatible.");
+}
+```
+
+For other languages like C and C++ you may need to handle this yourself with [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code). 
+
+```cpp
+inline void
+set_cursor_position(const Maze::Point &p)
+{
+    std::cout << "\033[" + std::to_string(p.row + 1) + ";"
+                     + std::to_string(p.col + 1) + "f";
+}
+```
+
+These allow you to manually specify the cursor position with a string. The default position is 1 so if you use 0 based indexing add one to the position.
+
 ### Build in Steps of Two
 
 Imagine that the entire grid is a checker or chess board, where all paths start as one color and all walls the other. To carve a path or connect wall segments the goal is to connect squares of the same color by using some maze building algorithm. The algorithm will make two squares of the same color connect by "breaking" or "overwriting" the square of a different color that separates those squares in some cardinal direction: North, East, South, or West.
+
+![two-step-maze](/assets/images/two-step-maze.png)
 
 I would recommend leaving a perimeter wall around your maze. Path carving algorithms should always connect **odd path squares** by breaking down **even wall squares**. Wall building algorithms should always connect **even wall squares** by building over **odd path squares**. This also simplifies bounds checking for solvers.
 
