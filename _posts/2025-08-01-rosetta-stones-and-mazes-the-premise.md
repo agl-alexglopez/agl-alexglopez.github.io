@@ -82,7 +82,7 @@ These types of mazes allow us to implement ideas from tree and graph theory whic
 - Generate a perfect maze.
   - The maze dimensions may be provided at the command line if they differ from the defaults.
   - Minimum and maximum sizes may be chosen by the programmer.
-  - The maze paths and walls should be discernible and aesthetically from the terminal. Choose characters wisely.
+  - The maze paths and walls should be discernible and aesthetically pleasing from the terminal. Choose characters wisely.
 - Output the maze building process to the terminal, ideally in real time.
 - Place a start and finish square within the built maze.
 - Output the solving process to the terminal, ideally in real time.
@@ -92,5 +92,7 @@ I choose the terminal as the display medium for this program because it is essen
 ## Try for Yourself
 
 In the remainder of this series we will explore how to approach this Rosetta Stone program in such a way that we hit all the points from the earlier table. Before continuing the series, now would be a good time to attempt this program. The problem statement is somewhat open ended which leaves plenty of opportunity for creativity and research. 
+
+## Conclusion
 
 If you would rather read on, the remainder of articles will not spoil how to implement the algorithms and logic of building and solving a maze. Future articles will simply discuss one possible design approach to maze paths, walls, builders, and solvers such that your implementations are fun and efficient.

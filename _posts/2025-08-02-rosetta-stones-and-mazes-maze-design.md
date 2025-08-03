@@ -101,9 +101,10 @@ We can now prepare our own abstraction for how we will represent and modify term
 Every cell will be represented as a `Square` with Rust's `u32` type. Here, `u32` means that this is an unsigned 32 bit integer, giving us 32 bits for our design. For any square in our maze we know it is either a path or a wall. If the square is a path, we will use a bit to indicate this. If the square is a wall, 4 of these 32 bits will specify its design. We will also add a `WallLine` type just for clarity to know that we are dealing with a wall and not a path sometimes in our code.
 
 ```rust
-// walls─────────────────────┬┬┬┐
-// path bit───────────────┐  ││││
-//                    0b0000 0000 0000 0000 0000 0000 0000 0000
+// walls─────────┬┬┬┐
+// built bit───┐ ││││
+// path bit───┐│ ││││
+//        0b0000 0000 0000 0000 0000 0000 0000 0000
 pub type Square = u32;
 pub type WallLine = u32;
 ```
@@ -214,9 +215,29 @@ Your maze object is now ready to go. Modify the design to fit your needs and pre
 
 Your task is to now figure out how you will update squares to reflect changes in the surrounding walls during path carving or wall adding algorithms. Then, print that to the terminal in your chosen language. To check if you have correctly set up this logic I find it easiest to start with a path carving algorithm. The initial state of the maze should be all walls which will look like this.
 
-![box-draw-grid](/assets/images/box-draw-grid.png)
+```txt
+┌┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┐
+├┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┤
+├┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┤
+├┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┤
+├┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┤
+├┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┤
+├┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┤
+├┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┤
+├┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┤
+├┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┤
+├┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┤
+├┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┤
+├┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┤
+├┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┤
+└┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┘
+```
 
-If the corners look correct, you have probably set up the wall connecting logic properly. That's it in terms of building! Now you have all the pieces in place to try your hand at implementing building however you see fit. Check out the tips at the end if you get stuck.
+If the corners look correct, you have probably set up the wall connecting logic properly. 
+
+## Conclusion 
+
+That's it in terms of building! Now you have all the pieces in place to try your hand at implementing building however you see fit. Check out the tips at the end if you get stuck.
 
 ## Implementation Tips
 
@@ -268,7 +289,17 @@ Imagine that the entire grid is a checker or chess board, where all paths start 
 
 I would recommend leaving a perimeter wall around your maze. Path carving algorithms should always connect **odd path squares** by breaking down **even wall squares**. Wall building algorithms should always connect **even wall squares** by building over **odd path squares**. This also simplifies bounds checking for solvers.
 
-There are other details to consider, such as if you have already "built" or "connected" a square under consideration to a square of the same type earlier in the algorithm, but that is the fun part.
+There are other details to consider, such as if you have already "built" or "connected" a square under consideration to a square of the same type earlier in the algorithm. You can use another bit for this if you would like but other techniques could work as well.
+
+```rust
+// walls─────────┬┬┬┐
+// built bit─┐   ││││
+// path bit─┐│   ││││
+//        0b0000 0000 0000 0000 0000 0000 0000 0000
+pub type WallLine = u32;
+```
+
+Now you can mark every square as built, processed, finished, etc, whenever you are done building that part of the maze.
 
 ### To Bit or Not to Bit
 
