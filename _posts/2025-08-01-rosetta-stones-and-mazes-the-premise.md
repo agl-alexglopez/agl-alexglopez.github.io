@@ -5,7 +5,13 @@ date: 2025-08-01
 series: "Rosetta Stones and Mazes"
 ---
 
-## Rosetta Stones and Mazes: The Premise
+## Prerequisites
+
+Before starting readers should
+
+- [have a basic understanding of at least one programming language](https://en.wikipedia.org/wiki/Programming_language).
+- [understand basic file input and output for a programming language](https://en.wikipedia.org/wiki/Input/output).
+- [understand how a programming language processes command line arguments](https://en.wikipedia.org/wiki/Command-line_argument_parsing).
 
 ## Outline
 

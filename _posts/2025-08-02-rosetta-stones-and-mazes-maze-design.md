@@ -5,7 +5,14 @@ date: 2025-08-02
 series: "Rosetta Stones and Mazes"
 ---
 
-## Rosetta Stones and Mazes: Maze Design
+## Prerequisites
+
+Before starting readers should
+
+- [be familiar with the basics of their computer terminal and its character printing](https://en.wikipedia.org/wiki/Computer_terminal).
+- [understand the basics of fonts and how special fonts are needed in order to print some icons, glyphs, and Unicode characters](https://www.nerdfonts.com/)
+- [be familiar with binary representation of numbers](https://en.wikipedia.org/wiki/Binary_number).
+- [understand some basic bitwise operations](https://en.wikipedia.org/wiki/Bitwise_operation).
 
 ## Outline
 
@@ -14,7 +21,7 @@ By the end of this article readers will
 - [understand the grid of most terminals](#the-terminal-grid).
 - [be familiar with helpful Unicode characters for maze building](#box-drawing-characters).
 - [understand basic bit encoding within integers as it relates to maze building](#bit-encoding).
-- [gain some tips for their own attempt at building mazes with this design](#implementation-tips)
+- [gain some tips for their own attempt at building mazes with this design](#implementation-tips).
 
 ## Choose a Language
 
