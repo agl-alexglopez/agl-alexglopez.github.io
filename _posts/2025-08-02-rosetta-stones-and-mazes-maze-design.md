@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "Rosetta Stones and Mazes: Design Tips"
+title: "Rosetta Stones and Mazes: Maze Design"
 date: 2025-08-02
 series: "Rosetta Stones and Mazes"
 ---
 
-## Rosetta Stones and Mazes: Design Tips 
+## Rosetta Stones and Mazes: Maze Design
 
 ## Outline
 
@@ -14,7 +14,7 @@ By the end of this article readers will
 - [understand the grid of most terminals](#the-terminal-grid).
 - [be familiar with helpful Unicode characters for maze building](#box-drawing-characters).
 - [understand basic bit encoding within integers as it relates to maze building](#bit-encoding).
-- [gain some tips for their own attempt at building and solving mazes with this design](#implementation-tips)
+- [gain some tips for their own attempt at building mazes with this design](#implementation-tips)
 
 ## Choose a Language
 
@@ -170,6 +170,12 @@ pub fn wall_char(square: Square) -> char {
 }
 ```
 
+#### One Array One Maze
+
+Let's finally add two more pieces of information and represent a maze.
+
+#### Test the Walls
+
 Your task is to now figure out how you will update squares to reflect changes in the surrounding walls during path carving or wall adding algorithms and print that to the terminal in your chosen language. To check if you have correctly set up this logic I find it easiest to start with a path carving algorithm. The initial state of the maze should be all walls which will look like this.
 
 ![box-draw-grid](/assets/images/box-draw-grid.png)
@@ -196,3 +202,7 @@ Imagine that the entire grid is a checker or chess board, where all paths start 
 I would recommend leaving a perimeter wall around your maze. Path carving algorithms should always connect **odd path squares** by breaking down **even wall squares**. Wall building algorithms should always connect **even wall squares** by building over **odd path squares**. This also simplifies bounds checking for solvers.
 
 There are other details to consider, such as if you have already "built" or "connected" a square under consideration to a square of the same type earlier in the algorithm, but that is the fun part.
+
+### To Bit or Not to Bit
+
+Major portions of this post are dedicated to bit manipulation and encoding. What if your language does not have these capabilities or you don't think the bit manipulations are worth your time? There are other strategies you can use but I would recommend sticking with the core wall logic and create a higher level `enum`-like or `struct`-like solution to this problem. Simply select a design that is more explicit but not as space efficient. How squares are represented should make little difference to the higher level builder and solver algorithms, as long as the squares hold the needed information that can be obtained via an interface.
