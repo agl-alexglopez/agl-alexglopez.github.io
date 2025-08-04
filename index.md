@@ -3,9 +3,12 @@ layout: default
 title: Home
 ---
 
-# Welcome to My Blog
+# Open Source Learnings
 
-Here I document computer science and software development topics I am learning.
+This blog is a documentation of valuable lessons I have learned and new ideas I am exploring related to programming, algorithms, data structure design, operating systems, compilers, and likely many more topics in the future. The site and its posts aim to be minimal in design, free from distractions, and full of information. 
+
+Please check out any posts below that interest you.
+
 
 ## Posts
 

@@ -1,6 +1,10 @@
-title:  Alexander G. Lopez
+title:  agl-alexglopez
 description: My Open Source Learnings
 theme:      null      # we’re rolling our own
 plugins:    []        # no extra bells & whistles
 markdown:   kramdown  # default
 highlighter: rouge    # for code syntax highlighting
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge

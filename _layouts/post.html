@@ -3,8 +3,6 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>{{ page.title }} | {{ site.title }}</title>
-
   <!-- Your CSS -->
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   <!-- Rouge syntax highlighting theme -->
@@ -12,7 +10,9 @@
 </head>
 <body>
   <header>
-    <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+    <h1>{{ page.title }}</h1>
+    <strong>Home: <a href="{{ '/' | relative_url }}">{{ site.title }}</a></strong>
+    {% include series-nav.html %}
   </header>
 
   <main>
@@ -20,8 +20,9 @@
   </main>
 
   <footer>
+    {% include series-nav.html %}
+    <strong>Home: <a href="{{ '/' | relative_url }}">{{ site.title }}</a></strong>
     <p>© {{ site.time | date: '%Y' }} {{ site.title }}</p>
   </footer>
 </body>
 </html>
-
