@@ -228,9 +228,9 @@ The final detail we need to manage is how multiple threads can leave their color
 
 ![tetrad](/assets/images/tetrad.png)
 
-A Tetradic color scheme is one in which four colors compliments one another by sharing a 90 or 180 degree relationship between one another. This effectively forms a rectangle, and sometimes a square, of colors that balanced and complement each other well.
+A Tetradic color scheme is one in which four colors compliments one another by sharing a 90 or 180 degree relationship between one another. This effectively forms a rectangle, and sometimes a square, of colors that balance and complement each other well.
 
-Because we have 24 bits, and 4 threads, we must choose four RGB colors with an interesting property: **the colors cannot have any bits that overlap**. Some maze solving algorithms use backtracking, so when a thread backtracks and removes its color from a square representing its path we must clean up its bits. 
+Because we have 24 bits, and 4 threads, we must choose four RGB colors with an interesting property: **the colors cannot have any bits that overlap**. Some maze solving algorithms use backtracking, so when a thread backtracks and removes its color from a square, representing its path, we must clean up its bits. 
 
 In other words, if four threads have visited a square, and we only care about their colors, the result is as follows.
 
@@ -238,11 +238,13 @@ In other words, if four threads have visited a square, and we only care about th
 let square = COLOR_1 | COLOR_2 | COLOR_3 | COLOR_4;
 ```
 
-If the thread using `COLOR_2` backtracks and removes its mark from this square, the following statement must be true.
+If the thread using `COLOR_2` backtracks and removes its mark from this square, the following statements must be true.
 
 ```rust
-let square = COLOR_1 | COLOR_2 | COLOR_3 | COLOR_4;
+assert!((square & !COLOR_1) == (COLOR_2 | COLOR_3 | COLOR_4));
 assert!((square & !COLOR_2) == (COLOR_1 | COLOR_3 | COLOR_4));
+assert!((square & !COLOR_3) == (COLOR_1 | COLOR_2 | COLOR_4));
+assert!((square & !COLOR_4) == (COLOR_1 | COLOR_2 | COLOR_3));
 ```
 
 When removing any color all remaining colors must remain unaffected. This is a hard problem! I was stuck for a while until I asked an embarrassingly down-voted [StackOverflow](https://stackoverflow.com/questions/77441620/how-do-i-find-4-complementary-24bit-rgb-colors-with-no-overlapping-bits) question and a kind soul helped me find four colors that satisfy this property.
