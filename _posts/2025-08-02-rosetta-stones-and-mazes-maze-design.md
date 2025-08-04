@@ -152,8 +152,7 @@ Every cell will be represented as a `Square` with Rust's `u32` type. Here, `u32`
 
 ```rust
 // walls─────────┬┬┬┐
-// built bit───┐ ││││
-// path bit───┐│ ││││
+// path bit───┐  ││││
 //        0b0000 0000 0000 0000 0000 0000 0000 0000
 pub type Square = u32;
 pub type WallLine = u32;
@@ -343,8 +342,8 @@ There are other details to consider, such as if you have already “built” or 
 
 ```rust
 // walls─────────┬┬┬┐
-// built bit─┐   ││││
-// path bit─┐│   ││││
+// built bit───┐ ││││
+// path bit───┐│ ││││
 //        0b0000 0000 0000 0000 0000 0000 0000 0000
 pub type WallLine = u32;
 ```
