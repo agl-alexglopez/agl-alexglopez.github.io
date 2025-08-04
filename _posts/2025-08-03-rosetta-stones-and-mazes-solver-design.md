@@ -217,7 +217,7 @@ pub type MazeMonitor = Arc<Mutex<Monitor>>;
 ```
 
 - The maze is protected in the monitor.
-- We are tracking the winning thread index to the finish with ID 0-4.
+- We are tracking the winning thread index to the finish with ID 0-3.
 - We will make the winning thread record the path it took to the finish in the monitor `Vec`.
 
 Different languages will likely approach the concept of mutual exclusion and multiple threads differently. However, a monitor is a simple design that works for many multithreading abstractions.
