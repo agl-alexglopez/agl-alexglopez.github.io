@@ -15,9 +15,9 @@ Before starting, readers should
 
 By the end of this post, readers will
 
-- [understand a basic render loop for the computer terminal](#terminal-rendering)
-- [understand the render loop provided by ratatui.rs](#rendering-with-ratatui)
-- [have directions to pursue for more advanced maze building](#conclusion)
+- [understand a basic render loop for the computer terminal](#terminal-rendering).
+- [understand the render loop provided by ratatui.rs](#rendering-with-ratatui).
+- [have directions to pursue for more advanced maze building](#conclusion).
 
 ## Checklist
 
@@ -126,7 +126,7 @@ This allows to get more creative with how we build and solve the maze versus how
 
 **We can record the history of our building and solving process in memory before we display anything. The state of a square can be set to any visual state by only modifying the bits of that specific `u32`, or `Square`.**
 
-To achieve this, we will perform the algorithms we wish, and as we go we will record how every square in the maze changes over time. Every action we take will be recorded as a before state and an after state. Here are the types we use to represent this abstraction.
+As we progress our algorithms we will record how every square in the maze changes over time. Every action we take will be recorded as a before state and an after state. Here are the types we use to represent this abstraction.
 
 ```rust
 #[derive(Debug, Default, Clone, Copy)]
@@ -146,9 +146,9 @@ pub struct Tape {
 }
 ```
 
-We create the concept of a `Delta` or change of a square and where that change occurred. We also record all of these changes in a `Tape` type that has a simple index that acts as our iterator for where we are in this playback. A burst is helpful if we want to tell the frame render code to update multiple `Delta` locations before the next frame. 
+We create the concept of a `Delta`, or change, of a square and where that change occurred. We also record all of these changes in a `Tape`; it has a simple index that acts as our iterator for where we are in this playback. A burst is helpful if we want to tell the frame render code to update multiple `Delta` locations before the next frame. 
 
-Now, we update the maze object by placing the core structure of the maze in a `Blueprint` and add a `Tape` type for both the builders and solvers. 
+Now, we update the maze object by placing the core structure of the maze in a `Blueprint` and adding a `Tape` type for both the builders and solvers. 
 
 ```rust
 #[derive(Debug, Clone, Default)]
@@ -180,7 +180,12 @@ pub struct Maze {
 }
 ```
 
-The maze builders now have no interaction with system level IO calls. They are only responsible for recording their work in the tape. Because we record both the before and after, we also have the added benefit that we can play the tape forward or in reverse.
+The maze builders now have no interaction with system level IO calls. They are only responsible for recording their work in the tape. Recording these before and after states provides many benefits.
+
+- We can play the building and solving forward.
+- We can play the building and solving in reverse.
+- We can step through the algorithms one `Delta` at a time, freely toggling forward and backward at will.
+- We can render maze changes as quickly or as slowly as we wish, separate from the frame rate of our terminal.
 
 Our next task is to figure out the render loop.
 
@@ -327,7 +332,7 @@ fn render_maze(this_run: tables::HistoryRunner, tui: &mut tui::Tui) -> tui::Resu
 
 Every time a new maze is requested by the user, we generate its playback tape first. Then, we have the build phase and solve phase loops that the user can interact with.
 
-There are many more details to manage with Ratatui. But after the core event and render loops are taken care of, those details are the fun widget design and user interaction choices that make the application your own.
+There are many more details to manage with Ratatui. But after the core event and render loops are taken care of, those details are the fun widget design and user interaction choices that make the program personalized to one's style.
 
 Overall, my experience with the Ratatui library was great. Please check out their site. If you want to see how all the pieces come together in a functional program, check out my [maze-tui](https://github.com/agl-alexglopez/maze-tui/tree/main) project on GitHub.
 
