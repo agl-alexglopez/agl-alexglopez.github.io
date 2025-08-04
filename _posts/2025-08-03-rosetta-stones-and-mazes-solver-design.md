@@ -7,12 +7,13 @@ series: "Rosetta Stones and Mazes"
 
 ## Prerequisites
 
-Before staring, readers should
+Before starting, readers should
 
 - [be familiar with binary representation of numbers](https://en.wikipedia.org/wiki/Binary_number).
 - [understand some basic bitwise operations](https://en.wikipedia.org/wiki/Bitwise_operation).
 - [be familiar with multithreading](https://en.wikipedia.org/wiki/Multithreading_(computer_architecture)).
 - [be familiar with basic color theory and encoding, especially RGB and 24-bit colors](https://en.wikipedia.org/wiki/Color_depth).
+- [know if their terminals supports “true color”](https://en.wikipedia.org/wiki/Color_depth#True_color_(24-bit))
 
 ## Outline
 
@@ -22,11 +23,43 @@ By the end of this post, readers will
 - [be able to model multiple solving processes simultaneously](#multiple-solvers).
 - [gain some tips for their own attempt at solving mazes with this design](#implementation-tips).
 
+## Checklist
+
+Keeping the checklist running from the last post, this post will continue to hit language feature points.
+
+| Hit                        | How                                                                                                                                                                                                             |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Basic Control Flow         | Sequentially building a maze and solving it.                                                                                                                                                                    |
+| Associative Containers     | Maze building and solving algorithms.                                                                                                                                                                           |
+| Sorting                    | Maze building and solving algorithms.                                                                                                                                                                           |
+| File IO                    | Output to terminal with stdout.                                                                                                                                                                                 |
+| Standard Output            | Printing maze walls and thread paths to terminal.                                                                                                                                                               |
+| Build Systems              | Setting up the project.                                                                                                                                                                                         |
+| Command Line Arguments     | Maze size input to program and algorithm selection.                                                                                                                                                             |
+| Functions                  | Any maze building or solving function.                                                                                                                                                                          |
+| Tests                      | Immediate feedback from terminal.                                                                                                                                                                               |
+| Strings                    | Command line argument and maze character printing.                                                                                                                                                              |
+| Common Textbook Algorithms | Maze building and solving algorithms.                                                                                                                                                                           |
+| Recursion                  | Maze building and solving algorithms.                                                                                                                                                                           |
+| Bit Manipulation           | Maze wall and solver design.                                                                                                                                                                                    |
+| Composition                | Separating the program into three parts, maze design, maze building, and maze solving is an example of composition. Consider creating one modules for each part and passing the maze to the builder and solver. |
+| Multithreading/Processes   | Maze solver design.                                                                                                                                                                                             |
+| 3rd Party Libraries        |                                                                                                                                                                                                                 |
+| Type Creation              | Maze wall design.                                                                                                                                                                                               |
+| Interface Design           | Keeping the maze object simple and passing it to a builder and solver interface that accept a maze is a good idea. This means the builders and solvers expose their own interfaces.                             |
+| Trees                      | Maze building and solving algorithms.                                                                                                                                                                           |
+| Stacks                     | Maze building and solving algorithms.                                                                                                                                                                           |
+| Heaps                      | Maze building algorithms.                                                                                                                                                                                       |
+| Queues                     | Maze solving algorithms.                                                                                                                                                                                        |
+| Graphs                     | Maze building and solving algorithms.                                                                                                                                                                           |
+| Multidimensional Arrays    | Maze square storage.                                                                                                                                                                                            |
+| Fun!                       | All of it!                                                                                                                                                                                                      |
+
 ## Trapped in the Labyrinth
 
 At this point you have likely tried your hand at maze building. This is a deep and interesting topic with some advanced algorithms and data structures to implement. However, the program likely feels incomplete without the final step of actually solving the maze. We will now take the final step to complete the Rosetta Stone maze program and design the solver(s).
 
-## Augmenting a Square
+## Augment the Square
 
 Recall from the last post the design of our `Square` type.
 
@@ -139,7 +172,7 @@ Now the solver can stamp each path cell it visits with its color as it progresse
 
 ## Multiple Solvers
 
-You now have all the pieces you need to implement the full Rosetta Stone maze program. In fact, when you use this program to try new languages, all we have discussed so far is a good stopping point if you are short on time. But I promised this series would discuss how to check off all of the items in the Hit and Miss columns of the first article so we can now start discussing more advanced features to pursue. 
+You now have all the pieces you need to implement the full Rosetta Stone maze program. In fact, when you use this program to try new languages, all we have discussed so far is a good stopping point if you are short on time. But I promised this series would discuss how to check off all of the items in the Hit and Miss columns of the first post so we can now start discussing more advanced features to pursue. 
 
 If the language you have chosen has multithreading capabilities, we can explore them with maze solvers. Instead of one solver, let's make four.
 
@@ -222,11 +255,13 @@ pub const THREAD_MASKS: [maze::Square; 4] = [
 ];
 ```
 
+Now there are four unique colors that will mix creating 15 possible unique colors depending upon the number of threads that visit a square. As an added bonus the more threads that visit a square the brighter the colors get which acts as a kind of heat map of thread activity.
+
 I went to all of this trouble because using 24-bit color allows us to specify the exact color that should appear on solving paths regardless of any terminal or shell style settings we may have on our computers.
 
 ## Conclusion 
 
-You now have all the tools to implement a program that both builds and solves mazes. We even went above and beyond with the more advanced multithreading design. You should alter the design to fit your language capabilities and time constraints. See the tips at the bottom of the article if you get stuck.
+You now have all the tools to implement a program that both builds and solves mazes. We even went above and beyond with the more advanced multithreading design. You should alter the design to fit your language capabilities and time constraints. See the tips at the bottom of the post if you get stuck.
 
 In the next and final post in this series we will discuss why this Rosetta Stone project is good for testing third party libraries in a language and some advanced ideas to pursue.
 
@@ -251,6 +286,18 @@ If you pursue these more advanced algorithms, you may need to alter how the solv
 - What are the nodes in a maze?
 - What are the edges in a maze?
 - What are the weights of the edges in a maze?
+
+### Compose the Process
+
+You are free to design this program in whatever way you enjoy. However, I think there is an easy and extendable way to approach things.
+
+Keep the maze object simple; it is just an integer and can expose the raw materials you have to work with to build walls, specifically the box-drawing characters. Then the program flow can look something like this.
+
+```txt
+solve( build( new_maze( args ) ) )
+```
+
+The maze allocates memory for its squares, the builder molds those squares to its liking, and the solver expects a perfect maze to solve. You can then add numerous functions that build and numerous functions that solve in different sections of your program or in different files. Each part of the process on its own remains simple, but these parts compose together to finish a complicated process.
 
 ### Simpler Colors
 

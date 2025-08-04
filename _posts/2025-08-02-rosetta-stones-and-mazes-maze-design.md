@@ -23,6 +23,58 @@ By the end of this post, readers will
 - [understand basic bit encoding within integers as it relates to maze building](#bit-encoding).
 - [gain some tips for their own attempt at building mazes with this design](#implementation-tips).
 
+## Checklist
+
+Recall the language feature hit and miss table from the previous post in this series.
+
+| Hit                    | Miss                       |
+| ---------------------- | -------------------------- |
+| Basic Control Flow     | Common Textbook Algorithms |
+| Associative Containers | Recursion                  |
+| Sorting                | Bit Manipulation           |
+| File IO                | Composition                |
+| Standard Output        | Multithreading/Processes   |
+| Build Systems          | 3rd Party Libraries        |
+| Command Line Arguments | Type Creation              |
+| Functions              | Interface Design           |
+| Tests                  | Trees                      |
+| Strings                | Stacks                     |
+|                        | Heaps                      |
+|                        | Queues                     |
+|                        | Graphs                     |
+|                        | Multidimensional Arrays    |
+|                        | Fun!                       |
+
+This referred to the features a word counting program hit and missed as a “Rosetta Stone” candidate. Let's convert it to just a hit table and we will fill in how we hit all of these points as we go through the series. This article hits the following points.
+
+| Hit                        | How                                                 |
+| -------------------------- | --------------------------------------------------- |
+| Basic Control Flow         | Sequentially building a maze.                       |
+| Associative Containers     | Maze building algorithms.                           |
+| Sorting                    | Maze building algorithms.                           |
+| File IO                    | Output to terminal with stdout.                     |
+| Standard Output            | Printing maze walls to terminal.                    |
+| Build Systems              | Setting up the project.                             |
+| Command Line Arguments     | Maze size input to program and algorithm selection. |
+| Functions                  | Any maze building function.                         |
+| Tests                      | Immediate feedback from terminal.                   |
+| Strings                    | Command line argument and maze character printing.  |
+| Common Textbook Algorithms | Maze building algorithms.                           |
+| Recursion                  | Maze building algorithms.                           |
+| Bit Manipulation           | Maze wall design.                                   |
+| Composition                |                                                     |
+| Multithreading/Processes   |                                                     |
+| 3rd Party Libraries        |                                                     |
+| Type Creation              | Maze wall design.                                   |
+| Interface Design           |                                                     |
+| Trees                      | Maze building algorithms.                           |
+| Stacks                     | Maze building algorithms.                           |
+| Heaps                      | Maze building algorithms.                           |
+| Queues                     |                                                     |
+| Graphs                     | Maze building algorithms.                           |
+| Multidimensional Arrays    | Maze square storage.                                |
+| Fun!                       | All of it!                                          |
+
 ## Choose a Language
 
 Previously, I proposed that building and solving a maze is the ideal Rosetta Stone program. If you attempted to implement the program before arriving here as suggested, great work! Perhaps you are wondering how an implementation is supposed to check off the wide range of language features mentioned in the Hit and Miss table from the first post. This post will discuss some design choices you can make to check off as many language features as possible with a maze program. 

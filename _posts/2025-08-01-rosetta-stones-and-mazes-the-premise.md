@@ -23,6 +23,8 @@ By the end of this post, readers will
 
 ## Rosetta Stone Programs
 
+The [Rosetta Stone](https://en.wikipedia.org/wiki/Rosetta_Stone) is a famous stone inscribed with three versions of a decree issued on behalf of Egyptian King Ptolemy V Epiphanes regarding his newly established divine cult and priests. It is significant because it communicates the same message with two types of Egyptian script and Ancient Greek, making it valuable in learning the other two languages on the stone if one is known.
+
 The first time I heard the phrase “Rosetta Stone” in the context of programming was in an introductory programming course. Stanford University Professor [Nick Parlante](https://cs.stanford.edu/people/nick/) used this phrase in a class full of burgeoning computer scientists taking his CS106A course to describe a program that helps one learn a new programming language quickly. The program should never change as one seeks to implement it with different languages, and it should attempt to cover a decent range of features from the language one seeks to learn.
 
 ### Word Counting
