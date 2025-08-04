@@ -24,7 +24,7 @@ By the end of this post, readers will
 
 ## Trapped in the Labyrinth
 
-At this point you have likely tried your hand at maze building. This a deep and interesting topic with some advanced algorithms and data structures to implement. However, the program likely feels incomplete without the final step of actually solving the maze. We will now take the final step to complete the Rosetta Stone maze program and design the solver(s).
+At this point you have likely tried your hand at maze building. This is a deep and interesting topic with some advanced algorithms and data structures to implement. However, the program likely feels incomplete without the final step of actually solving the maze. We will now take the final step to complete the Rosetta Stone maze program and design the solver(s).
 
 ## Augmenting a Square
 
@@ -54,7 +54,7 @@ Let's add the ability to make a square the start or finish of the maze.
 pub type Square = u32;
 ```
 
-So counting from the 0th least significant bit we now have the 30th bit as the start marker and the 31st bit as the finish marker. To begin the solving process, you first select a random start and finish point in the maze. How you display those points is up to you but it will look something like this (I use S for start and F for finish).
+So counting from the 0th least significant bit we now have the 30th bit as the start marker and the 31st bit as the finish marker. To begin the solving process, you first select a random start and finish point in the maze. How you display those points is up to you, but it will look something like this (I use S for start and F for finish).
 
 ```txt
 ┌───────────┬───┬─┬───┬─────────┬───┬─┬─┬───┬─┐
@@ -113,7 +113,7 @@ We still have the lowest 24 bits to work with. Let's add 24-bit RGB color for th
 pub type Square = u32;
 ```
 
-There are many techniques to print color to the screen but they usually revolve around isolating these three colors into an RGB tuple or array. In Rust that could be done like this.
+There are many techniques to print color to the screen, but they often revolve around isolating these three colors into an RGB tuple or array. In Rust that could be done like this.
 
 ```rust
 // Make constants for convenience.
@@ -139,7 +139,7 @@ Now the solver can stamp each path cell it visits with its color as it progresse
 
 ## Multiple Solvers
 
-You now have all the pieces you need to implement the full Rosetta Stone maze program. In fact, when you use this program to try new languages, all we have discussed so far is a good stopping point if you are short on time. But I promised this series would discuss how to check off all of items in the Hit and Miss columns of the first article so we can now start discussing more advanced features to pursue. 
+You now have all the pieces you need to implement the full Rosetta Stone maze program. In fact, when you use this program to try new languages, all we have discussed so far is a good stopping point if you are short on time. But I promised this series would discuss how to check off all of the items in the Hit and Miss columns of the first article so we can now start discussing more advanced features to pursue. 
 
 If the language you have chosen has multithreading capabilities, we can explore them with maze solvers. Instead of one solver, let's make four.
 
@@ -184,7 +184,7 @@ pub type MazeMonitor = Arc<Mutex<Monitor>>;
 ```
 
 - The maze is protected in the monitor.
-- We tracking the winning thread index to the finish with id 0-4.
+- We are tracking the winning thread index to the finish with ID 0-4.
 - We will make the winning thread record the path it took to the finish in the monitor `Vec`.
 
 Different languages will likely approach the concept of mutual exclusion and multiple threads differently. However, a monitor is a simple design that works for many multithreading abstractions.
@@ -195,11 +195,11 @@ The final detail we need to manage is how multiple threads can leave their color
 
 ![tetrad](/assets/images/tetrad.png)
 
-A tetradic color scheme is one in which four colors compliment each other by sharing a 90 or 180 degree relationship between one another. This effectively forms a rectangle, and sometimes a square, of colors that balanced and complement each other well.
+A Tetradic color scheme is one in which four colors compliments one another by sharing a 90 or 180 degree relationship between one another. This effectively forms a rectangle, and sometimes a square, of colors that balanced and complement each other well.
 
 Because we have 24 bits, and 4 threads, we must choose four RGB colors with an interesting property: **the colors cannot have any bits that overlap**. Some maze solving algorithms use backtracking, so when a thread backtracks and removes its color from a square representing its path we must clean up its bits. 
 
-In other words, if four threads have visited a square and we only care about their colors, the result is as follows.
+In other words, if four threads have visited a square, and we only care about their colors, the result is as follows.
 
 ```rust
 let square = COLOR_1 | COLOR_2 | COLOR_3 | COLOR_4;
@@ -234,9 +234,27 @@ In the next and final post in this series we will discuss why this Rosetta Stone
 
 Again, I will not spoil implementation details for the solvers. However, I can leave some ideas that may simplify the process of building this part of the program.
 
+### Obtain Algorithms
+
+Similar to maze building algorithms, maze solving algorithms will introduce you to a rich field of computer science theory. There are two main solving algorithms to pursue.
+
+- Depth first search.
+- Breadth first search.
+
+Each has its own unique characteristics that are worth learning about. However, if you continue to research graph related algorithms, you will likely encounter these as well.
+
+- Dijkstra's.
+- A\* (A-star).
+
+If you pursue these more advanced algorithms, you may need to alter how the solvers interpret paths and weights in the maze. Or, you might need to perform more passes over the maze before solving. As you learn more about these types of algorithms, see if you can answer these questions about the maze.
+
+- What are the nodes in a maze?
+- What are the edges in a maze?
+- What are the weights of the edges in a maze?
+
 ### Simpler Colors
 
-The 24-bit color idea is somewhat advanced. Instead we can take an approach more in line with our wall design from the last post. However, it requires more hand coding. Instead of 24 bit colors, just use a single bit to represent the paint of a thread (my C++ version of this program uses this method).
+The 24-bit color idea is somewhat advanced. Instead, we can take an approach more in line with our wall design from the last post. However, it requires more hand coding. Instead of 24 bit colors, just use a single bit to represent the paint of a thread (my C++ version of this program uses this method).
 
 ```cpp
 /// wall structure----------------------||||
@@ -259,7 +277,7 @@ The 24-bit color idea is somewhat advanced. Instead we can take an approach more
 using Square_bits = uint16_t;
 ```
 
-If a thread visits a square it will turn on its paint bit. If it leaves it turns it off. Because there are 4 bits that is 16 possible combinations of colors, including 0. Hand pick those colors as ANSI color escape sequences.
+If a thread visits a square, it will turn on its paint bit. If it leaves, it turns it off. Because there are 4 bits, we have 16 possible combinations of colors, including 0. Hand pick those colors as ANSI color escape sequences.
 
 ```cpp
 constexpr std::string_view ansi_red = "\033[38;5;1m█\033[0m";
@@ -304,22 +322,23 @@ constexpr std::array<std::string_view, 16> thread_colors = {
 };
 ```
 
-Now there is a unique color combination for every combination of thread path that is actively over a square. To print we just check if any color bits are on and then print them out.
+Now there is a unique color combination for every combination of thread path that is actively over a square. To print, we just check if any color bits are on and then print them out.
 
 ```c++
 constexpr uint16_t thread_paint_shift{4};
 constexpr Thread_paint thread_paint_mask{0b1111'0000};
 if (square & thread_paint_mask)
 {
-        const Thread_paint thread_color
-            = (square & thread_paint_mask).load() >> thread_paint_shift;
-        std::cout << thread_colors.at(thread_color);
+    const Thread_paint thread_color = 
+        (square & thread_paint_mask) 
+        >> thread_paint_shift;
+    std::cout << thread_colors.at(thread_color);
 }
 ```
 
 ### To Bit or Not to Bit
 
-We again have designed a large part of the program to use bit manipulation. If you would rather use a more Object Oriented Design with a struct, here is how I might do it in Rust.
+We again have designed a large part of the program to use bit manipulation. If you would rather use a more Object-Oriented Design with a struct, here is how I might do it in Rust.
 
 ```rust
 pub struct Square {

@@ -17,13 +17,13 @@ Before starting, readers should
 
 By the end of this post, readers will
 
-- [know what "Rosetta Stone" means in the context of programming](#rosetta-stone-programs). 
-- [understand how a word counting program meets the needs of a "Rosetta Stone" program](#word-counting).
+- [know what “Rosetta Stone” means in the context of programming](#rosetta-stone-programs). 
+- [understand how a word counting program meets the needs of a “Rosetta Stone” program](#word-counting).
 - [have the information needed to attempt maze building and solving](#a-maze-program).
 
 ## Rosetta Stone Programs
 
-The first time I heard the phrase "Rosetta Stone" in the context of programming was in an introductory programming course. Stanford University Professor [Nick Parlante](https://cs.stanford.edu/people/nick/) used this phrase in a class full of burgeoning computer scientists taking his CS106A course to describe a program that helps one learn a new programming language quickly. The program should never change as one seeks to implement it with different languages and it should attempt to cover a decent range of features from the language one seeks to learn.
+The first time I heard the phrase “Rosetta Stone” in the context of programming was in an introductory programming course. Stanford University Professor [Nick Parlante](https://cs.stanford.edu/people/nick/) used this phrase in a class full of burgeoning computer scientists taking his CS106A course to describe a program that helps one learn a new programming language quickly. The program should never change as one seeks to implement it with different languages, and it should attempt to cover a decent range of features from the language one seeks to learn.
 
 ### Word Counting
 
@@ -45,23 +45,23 @@ If programmer experience is a spectrum then this task is great for those at the 
 However, I think for those in the middle of that spectrum, those of us who need to improve our programming skills and are seeking more complex tasks that stretch our abilities, there exists a better Rosetta Stone. Let's enumerate what the word count program covers and what it does not.
 
 
-| Hit | Miss |
-|---------|-------------|
-|Basic Control Flow|Common Textbook Algorithms |
-|Associative Containers|Recursion |
-|Sorting|Bit Manipulation|
-|File IO|Composition|
-|Standard Output|Multithreading/Processes|
-|Build Systems|3rd Party Libraries|
-|Command Line Arguments|Type Creation|
-|Functions|Interface Design|
-|Tests|Trees|
-|Strings|Stacks|
-||Heaps|
-||Queues|
-||Graphs|
-||Multi-Dimensional Arrays|
-||Fun!|
+| Hit                    | Miss                       |
+| ---------------------- | -------------------------- |
+| Basic Control Flow     | Common Textbook Algorithms |
+| Associative Containers | Recursion                  |
+| Sorting                | Bit Manipulation           |
+| File IO                | Composition                |
+| Standard Output        | Multithreading/Processes   |
+| Build Systems          | 3rd Party Libraries        |
+| Command Line Arguments | Type Creation              |
+| Functions              | Interface Design           |
+| Tests                  | Trees                      |
+| Strings                | Stacks                     |
+|                        | Heaps                      |
+|                        | Queues                     |
+|                        | Graphs                     |
+|                        | Multidimensional Arrays    |
+|                        | Fun!                       |
 
 The last point is important only in that the program described is somewhat simple. I am sure there are ways to spice it up but for a Rosetta Stone program I think there should be some entertaining and immediate feedback for the programmer. Importantly, I also think there should be a very high ceiling of complexity such that a programmer can take their Rosetta Stone program as far as they wish, depending on their needs.
 
@@ -71,7 +71,7 @@ Enter Mazes.
 
 Wikipedia gives the following definition for a [Maze](https://en.wikipedia.org/wiki/Maze).
 
-> A maze is a path or collection of paths, typically from an entrance to a goal. The word is used to refer both to branching tour puzzles through which the solver must find a route, and to simpler non-branching ("unicursal") patterns that lead unambiguously through a convoluted layout to a goal.
+> A maze is a path or collection of paths, typically from an entrance to a goal. The word is used to refer both to branching tour puzzles through which the solver must find a route, and to simpler non-branching (“unicursal”) patterns that lead unambiguously through a convoluted layout to a goal.
 
 For the purposes of this article, and those that follow, we will consider unicursal mazes. Specifically, we will be most interested in perfect mazes: mazes for which there are no loops and a path exists between any two locations. 
 
@@ -87,11 +87,11 @@ These types of mazes allow us to implement ideas from tree and graph theory whic
 - Place a start and finish square within the built maze.
 - Output the solving process to the terminal, ideally in real time.
 
-I choose the terminal as the display medium for this program because it is essential to most programming languages' input and output systems. One could choose to create an application with a window for this task, more in the style of game development, but the goal is to quickly get up and running with immediate feedback on the program. The terminal is the simplest tool for such a goal. However, this program could be easily extended to pursue a windowed implementation (remember a high complexity ceiling is a good thing for a Rosetta Stone program).
+I pick the terminal as the display medium for this program because it is essential to most programming languages' input and output systems. One could decide to create an application with a window for this task, more in the style of game development, but the goal is to quickly get up and running with immediate feedback on the program. The terminal is the simplest tool for such a goal. However, this program could be easily extended to pursue a windowed implementation (remember a high complexity ceiling is a good thing for a Rosetta Stone program).
 
 ## Try for Yourself
 
-In the remainder of this series we will explore how to approach this Rosetta Stone program in such a way that we hit all the points from the earlier table. Before continuing the series, now would be a good time to attempt this program. The problem statement is somewhat open ended which leaves plenty of opportunity for creativity and research. 
+In the remainder of this series we will explore how to approach this Rosetta Stone program in such a way that we hit all the points from the earlier table. Before continuing the series, now would be a good time to attempt this program. The problem statement is somewhat open-ended which leaves plenty of opportunity for creativity and research. 
 
 ## Conclusion
 

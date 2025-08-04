@@ -55,15 +55,13 @@ The above grid represents the cells of a computer terminal. Each cell is rectang
 +-----------+
 ```
 
-Using a combination of ASCII characters allows us to create a somewhat recognizable maze structure. However, due to rectangular cells the gaps between the vertical bars and the plus signs can seem like paths when in fact they are not. If we look to Unicode we can discover some characters that are tailor made to our task of building paths and walls. 
+Using a combination of ASCII characters allows us to create a somewhat recognizable maze structure. However, due to rectangular cells the gaps between the vertical bars and the plus signs can seem like paths when in fact they are not. If we look to Unicode we can discover some characters that are tailor-made to our task of building paths and walls. 
 
 ### Box-drawing Characters
 
-*Note that to enjoy the remainder of this design, you will need to have installed a fully featured font that your terminal can use to display Unicode and box-drawing characters.*
+One of my favorite Wikipedia pages is the [Box-drawing characters](https://en.wikipedia.org/wiki/Box-drawing_characters) page. The general purpose of these characters is to address the problems we saw with the tiny gaps in our attempt at mazes with ASCII characters. I frequently find myself visiting this page when writing documentation or diagrams for projects I am working on. It is very satisfying to have lines appear to seamlessly connect in a terminal or editor.
 
-One of my favorite Wikipedia pages is the [Box-drawing characters](https://en.wikipedia.org/wiki/Box-drawing_characters) page. The general purpose of these characters is to address the problems we saw with the tiny gaps in our attempt at mazes with ASCII characters. I often find myself visiting this page when writing documentation or diagrams for projects I am working on. It is very satisfying to have lines appear to seamlessly connect in a terminal or editor.
-
-While traditionally intended to help create clean terminal user interfaces, box-drawing characters can also help us in our maze endeavors. What are mazes if not boxes with little chunks taken out to form paths? Let's examine characters that the Wikipedia page provides to us in the order they are presented. Here is the light weight variant of box-drawing characters we are most interested in.
+While traditionally intended to help create clean terminal user interfaces, box-drawing characters can also help us in our maze endeavors. What are mazes if not boxes with little chunks taken out to form paths? Let's examine characters that the Wikipedia page provides to us in the order they are presented. Here is the lightweight variant of box-drawing characters we are most interested in.
 
 ```txt
 ─  │  ┌  ┐  └  ┘  ├  ┤  ┬  ┴  ┼  ╴  ╵  ╶  ╷
@@ -87,7 +85,7 @@ Maybe you already have a vision for how these pieces could fit together to form 
 └───────────╴
 ```
 
-Much better! The walls are solid and it is clear where the paths lead. However, I generated the above maze by hand which is not a viable solution for a maze **generation program**. Let's design a module that will help us program the process.
+Much better! The walls are solid, and it is clear where the paths lead. However, I generated the above maze by hand which is not a viable solution for a maze **generation program**. Let's design a module that will help us program the process.
 
 ### Bit Encoding
 
@@ -98,7 +96,7 @@ So far we know two important facts.
 
 We can now prepare our own abstraction for how we will represent and modify terminal cells to represent a maze in memory during our program.
 
-Every cell will be represented as a `Square` with Rust's `u32` type. Here, `u32` means that this is an unsigned 32 bit integer, giving us 32 bits for our design. For any square in our maze we know it is either a path or a wall. If the square is a path, we will use a bit to indicate this. If the square is a wall, 4 of these 32 bits will specify its design. We will also add a `WallLine` type just for clarity to know that we are dealing with a wall and not a path sometimes in our code.
+Every cell will be represented as a `Square` with Rust's `u32` type. Here, `u32` means that this is an unsigned 32-bit integer, giving us 32 bits for our design. For any square in our maze we know it is either a path or a wall. If the square is a path, we will use a bit to indicate this. If the square is a wall, 4 of these 32 bits will specify its design. We will also add a `WallLine` type just for clarity to know that we are dealing with a wall and not a path sometimes in our code.
 
 ```rust
 // walls─────────┬┬┬┐
@@ -109,7 +107,7 @@ pub type Square = u32;
 pub type WallLine = u32;
 ```
 
-If we count our bits in this diagram starting from right at 0 to left at 31, [representing least significant bit to most significant bit](https://en.wikipedia.org/wiki/Bit_numbering), bits 24-27 will represent our walls and bit 29 will mark a `Square` as a path. Do not worry about all the bits going to waste for now. They will be used later.
+If we count our bits in this diagram starting from right at 0 to left at 31, [representing the least significant bit to most significant bit](https://en.wikipedia.org/wiki/Bit_numbering), bits 24-27 will represent our walls and bit 29 will mark a `Square` as a path. Do not worry about all the bits going to waste for now. They will be used later.
 
 The [bit twiddling](https://graphics.stanford.edu/~seander/bithacks.html) readers may already see where this is going, but if we count the number of box-drawing characters we have we see there are 15. Let's add a character that will represent a wall that has no other walls around it to bring that count up to **16**. The number 16 is significant because that is how many values can be represented with 4 bits, if we include 0.
 
@@ -179,7 +177,7 @@ pub fn wall_char(square: Square) -> char {
 
 #### One Array One Maze
 
-Because the maze conceptually represents a grid it might be tempting to create a multi-dimensional array.
+Because the maze conceptually represents a grid it might be tempting to create a multidimensional array.
 
 ```rust
 pub struct Maze {
@@ -241,7 +239,7 @@ That's it in terms of building! Now you have all the pieces in place to try your
 
 ## Implementation Tips
 
-As promised, I will not outline how to fully implement maze building or solving. However, in my experience there are certain facts to be aware of that make the process simpler. This will allow you to get to the fun stuff faster; but you are free to try to figure this out on your own. 
+As promised, I will not outline how to fully implement maze building or solving. However, in my experience there are certain facts to be aware of that make the process simpler. This allows you to get to the fun stuff faster; but you are free to try to figure this out on your own. 
 
 ### Obtain Algorithms
 
@@ -283,13 +281,13 @@ These allow you to manually specify the cursor position with a string. The defau
 
 ### Build in Steps of Two
 
-Imagine that the entire grid is a checker or chess board, where all paths start as one color and all walls the other. To carve a path or connect wall segments the goal is to connect squares of the same color by using some maze building algorithm. The algorithm will make two squares of the same color connect by "breaking" or "overwriting" the square of a different color that separates those squares in some cardinal direction: North, East, South, or West.
+Imagine that the entire grid is a checker or chess board, where all paths start as one color and all walls the other. To carve a path or connect wall segments the goal is to connect squares of the same color by using some maze building algorithm. The algorithm will make two squares of the same color connect by “breaking” or “overwriting” the square of a different color that separates those squares in some cardinal direction: North, East, South, or West.
 
 ![two-step-maze](/assets/images/two-step-maze.png)
 
 I would recommend leaving a perimeter wall around your maze. Path carving algorithms should always connect **odd path squares** by breaking down **even wall squares**. Wall building algorithms should always connect **even wall squares** by building over **odd path squares**. This also simplifies bounds checking for solvers.
 
-There are other details to consider, such as if you have already "built" or "connected" a square under consideration to a square of the same type earlier in the algorithm. You can use another bit for this if you would like but other techniques could work as well.
+There are other details to consider, such as if you have already “built” or “connected” a square under consideration to a square of the same type earlier in the algorithm. You can use another bit for this if you would like, but other techniques could work as well.
 
 ```rust
 // walls─────────┬┬┬┐
@@ -299,11 +297,11 @@ There are other details to consider, such as if you have already "built" or "con
 pub type WallLine = u32;
 ```
 
-Now you can mark every square as built, processed, finished, etc, whenever you are done building that part of the maze.
+Now you can mark every square as built, processed, finished, etc., whenever you are done building that part of the maze.
 
 ### To Bit or Not to Bit
 
-Major portions of this post are dedicated to bit manipulation and encoding. What if your language does not have these capabilities or you don't think the bit manipulations are worth your time? There are other strategies you can use but I would recommend sticking with the core wall logic and create a higher level `enum`-like or `struct`-like solution to this problem. The core concepts I introduced could work exactly the same with a less space efficient approach. Here is how I might do it in Rust.
+Major portions of this post are dedicated to bit manipulation and encoding. What if your language does not have these capabilities, or you don't think the bit manipulations are worth your time? There are other strategies you can use, but I would recommend sticking with the core wall logic and create a higher level `enum`-like or `struct`-like solution to this problem. The core concepts I introduced could work exactly the same with a less space efficient approach. Here is how I might do it in Rust.
 
 ```rust
 pub struct Square {

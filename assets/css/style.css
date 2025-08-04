@@ -85,7 +85,6 @@ pre {
   overflow-x: auto;
   border-radius: 4px;
   line-height: 1;         /* tight, for accurate box-drawing */
-  letter-spacing: 0;      /* no extra horizontal gap */
 }
 
 /* inline code */
