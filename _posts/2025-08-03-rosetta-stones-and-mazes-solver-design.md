@@ -238,7 +238,7 @@ In other words, if four threads have visited a square, and we only care about th
 let square = COLOR_1 | COLOR_2 | COLOR_3 | COLOR_4;
 ```
 
-If the thread using `COLOR_2` backtracks and removes its mark from this square, the following statements must be true.
+If any thread backtracks and removes its mark from this square, the following statements must be true.
 
 ```rust
 assert!((square & !COLOR_1) == (COLOR_2 | COLOR_3 | COLOR_4));
