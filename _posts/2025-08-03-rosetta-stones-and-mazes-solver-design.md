@@ -168,7 +168,19 @@ fn get_rgb(square: maze::Square) -> (u8, u8, u8) {
 
 If a method for color printing takes the hex value for colors then simply masking and obtaining the bottom 24 bits would work.
 
-Now the solver can stamp each path cell it visits with its color as it progresses through its solving process.
+Now the solver can stamp each square it visits with its color via a bitwise OR operation.
+
+```rust
+square |= COLOR;
+```
+
+The solver can also remove its color from a square while backtracking via a bitwise AND operation.
+
+```rust
+squrae &= !COLOR;
+```
+
+These two operations allow you to visualize many solving algorithms.
 
 ## Multiple Solvers
 
