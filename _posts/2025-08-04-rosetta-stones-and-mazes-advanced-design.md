@@ -184,6 +184,7 @@ The maze builders now have no interaction with system level IO calls. They are o
 
 - We can play the building and solving forward.
 - We can play the building and solving in reverse.
+- We can easily remember which solver threads were on any square at any point in time. This gives insight into how the locking code and OS scheduler ran threads.
 - We can step through the algorithms one `Delta` at a time, freely toggling forward and backward at will.
 - We can render maze changes as quickly or as slowly as we wish, separate from the frame rate of our terminal.
 
