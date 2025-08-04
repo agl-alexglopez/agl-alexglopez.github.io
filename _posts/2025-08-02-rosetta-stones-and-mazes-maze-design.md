@@ -226,6 +226,7 @@ pub fn wall_char(square: Square) -> char {
 }
 ```
 
+Now as you build you will have to update the bits of all neighboring squares in cardinal directions. If you are adding a wall in a square you will need to turn on a bit for all the neighboring wall squares. If you are destroying a wall you will need to turn off a bit for all neighboring wall squares.
 #### One Array One Maze
 
 Because the maze conceptually represents a grid it might be tempting to create a multidimensional array.

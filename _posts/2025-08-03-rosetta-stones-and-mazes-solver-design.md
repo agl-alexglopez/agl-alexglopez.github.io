@@ -263,7 +263,7 @@ I went to all of this trouble because using 24-bit color allows us to specify th
 
 ## Conclusion 
 
-You now have all the tools to implement a program that both builds and solves mazes. We even went above and beyond with the more advanced multithreading design. You should alter the design to fit your language capabilities and time constraints. See the tips at the bottom of the post if you get stuck.
+You now have all the tools to implement a program that both builds and solves mazes. We even went above and beyond with the more advanced multithreading design. You should alter the design to fit your language capabilities and time constraints. See the tips at the bottom of the post if you get stuck. I am refraining from showing what a finished product should look like in this post so as not to spoil the satisfaction of creating these visuals yourself.
 
 In the next and final post in this series we will discuss why this Rosetta Stone project is good for testing third party libraries in a language and some advanced ideas to pursue.
 
