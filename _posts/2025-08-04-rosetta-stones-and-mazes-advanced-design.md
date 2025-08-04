@@ -122,7 +122,7 @@ Let's take a step back and separate the logic and algorithms we use to build and
 1. Our representation of maze squares is extremely compact (16-32 bits, depending on your approach).
 2. Every operation we perform on our bits for the building or solving process is [idempotent](https://en.wikipedia.org/wiki/Idempotence). We add bits via a logical OR operation and removing bits with the logical AND operation using the inverse of the bits of interest. These operations can be applied multiple times with no inconvenient side effects. We even ensured that the 24-bit colors we used for multiple threads have this idempotence.
 
-This allows to get more creative with how we build and solve the maze versus how we display it. The key insight is as follows. 
+This allows us to get more creative with how we build and solve the maze versus how we display it. The key insight is as follows. 
 
 **We can record the history of our building and solving process in memory before we display anything. The state of a square can be set to any visual state by only modifying the bits of that specific `u32`, or `Square`.**
 
