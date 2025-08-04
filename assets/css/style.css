@@ -20,7 +20,7 @@
   2. Base typography for your site
 ────────────────────────────────────*/
 body {
-  font-family: 'Monaspace Neon Var', 'Inter', sans-serif;
+  font-family: 'Monaspace Neon Var', 'Monospace Neon', 'Inter', sans-serif;
   font-feature-settings: 'calt' 1, 'ss01' 1, 'ss02' 1; 
   /* here MONO axis stays at its default (0) → proportional letters */
   line-height: 1.6;
@@ -72,7 +72,7 @@ th, td {
 ──────────────────────────────────────────*/
 pre, code {
   /* switch MONO axis to 1 → true monospaced grid */
-  font-family: 'Monaspace Neon Mono', ui-monospace, monospace;
+  font-family: 'Monaspace Neon', ui-monospace, monospace;
   /* enable contextual alternates for box-drawing smoothing */
   font-feature-settings: 'calt' 1, 'ss01' 1, 'ss02' 1; 
   font-variation-settings: 'MONO' 1;
