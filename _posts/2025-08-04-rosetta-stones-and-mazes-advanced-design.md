@@ -339,7 +339,7 @@ That's it! We have checked off all the language feature boxes we said we would. 
 
 Let's briefly discuss some directions you could take this program if you really wanted to advance your skills.
 
-- Use a graphics library to create a window for your maze rather than using the built-in terminal. I think I will be trying this for the [Zig](https://ziglang.org/) programming. This will also require incorporation of a 3rd party library.
+- Use a graphics library to create a window for your maze rather than using the built-in terminal. I think I will be trying this for the [Zig](https://ziglang.org/) programming language. This will also require incorporation of a 3rd party library.
 - Bring the maze into three dimensions. You might try a graphics framework in your language, but a [terminal is capable of 3D rendering](https://github.com/leonmavr/retrocube), believe it or not.
 - Make the maze an interactive game or race between players over a network. Start up to four players in the four corners of the maze and have them race to the center. This will hit on networking, a language feature that this program did not hit, unfortunately.
 
