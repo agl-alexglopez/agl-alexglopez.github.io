@@ -219,7 +219,6 @@ Then we set up our core loop with a sender and receiver with the help of [crossb
 
 ```rust
 impl EventHandler {
-    /// Constructs a new instance of [`EventHandler`].
     pub fn new(delta_rate: f64) -> Self {
         let mut deltas = Duration::from_secs_f64(1.0 / delta_rate);
         let (sender, receiver) = unbounded();
@@ -227,9 +226,6 @@ impl EventHandler {
         thread::spawn(move || {
             let mut last_delta = Instant::now();
             loop {
-                // If we poll at the min acceptable duration always then when the user speeds
-                // up or slows down the deltas for the maze rendering speed we still have a
-                // responsive UI not tied to rendering speed and we have a CPU utilization cap.
                 if event::poll(MIN_POLL).expect("poll error") {
                     match event::read().expect("event error") {
                         CtEvent::Key(e) => {
