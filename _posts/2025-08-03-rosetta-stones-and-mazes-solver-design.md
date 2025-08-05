@@ -295,7 +295,7 @@ Each has its own unique characteristics that are worth learning about. However, 
 - Dijkstra's.
 - A\* (A-star).
 
-If you pursue these more advanced algorithms, you may need to alter how the solvers interpret paths and weights in the maze. Or, you might need to perform more passes over the maze before solving. As you learn more about these types of algorithms, see if you can answer these questions about the maze.
+For these more advanced algorithms to make use of their additional logic, you may need to alter how the solvers interpret paths and weights in the maze. Or, you might need to perform more passes over the maze before solving. As you learn more about these types of algorithms, see if you can answer these questions about the maze.
 
 - What are the nodes in a maze?
 - What are the edges in a maze?
