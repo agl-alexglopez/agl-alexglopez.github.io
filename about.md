@@ -36,7 +36,7 @@ The gold streaks across the black are from the table epoxy ripping when the firs
 
 ### Keyboard
 
-So I said I enjoy learning things unrelated to typing words on a screen. Building a mechanical keyboard does not involve typing words on a screen, so this still counts by technicality.
+I said I enjoy learning things unrelated to typing words on a screen. Building a mechanical keyboard does not involve typing words on a screen. This counts by technicality.
 
 ![discipline](/assets/images/discipline.jpg)
 

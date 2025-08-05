@@ -263,7 +263,7 @@ I have cut out some code and shortened things to make the core logic clearer. Th
 1. The loop monitors for key presses. Because this is immediate mode rendering, the internal maze render code will have to change the functions it calls on each loop to display what is needed based on user input.
 2. We have an adjustable speed for rendering the pace of maze changes. The user can send key presses that speed up or slow down the `deltas` duration. If enough time has passed we send a signal to the maze rendering code to update the maze squares as specified in the playback `Tape` we make during building and solving.
 
-This is still not a traditional video game physics style rendering loop. We don't render at the maximum frame rate the terminal allows, or even a 30-60 FPS target. I don't currently see the need to consume the user's CPU resources in such a way at this time. We want the user to simply observe and step through algorithms one step at a time. Very few squares on the screen change with every update, so rendering the entire frame many times per second is wasteful. 
+This is still not a traditional video game physics style rendering loop. We don't render at the maximum frame rate the terminal allows, or even a 30-60 FPS target. I don't currently see the need to consume the user's CPU resources in such a way at this time. We want the user to simply observe and step through algorithms one step at a time. Very few squares on the screen change with every update. Rendering the entire frame many times per second is wasteful. 
  
 Finally, this allows the internal `render_maze` loop to only worry about rendering a frame when told to do so.
 

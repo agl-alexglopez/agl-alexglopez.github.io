@@ -87,7 +87,7 @@ Let's add the ability to make a square the start or finish of the maze.
 pub type Square = u32;
 ```
 
-So counting from the 0th least significant bit we now have the 30th bit as the start marker and the 31st bit as the finish marker. To begin the solving process, you first select a random start and finish point in the maze. How you display those points is up to you, but it will look something like this (I use S for start and F for finish).
+Counting from the 0th least significant bit we now have the 30th bit as the start marker and the 31st bit as the finish marker. To begin the solving process, you first select a random start and finish point in the maze. How you display those points is up to you, but it will look something like this (I use S for start and F for finish).
 
 ```txt
 ┌───────────┬───┬─┬───┬─────────┬───┬─┬─┬───┬─┐
