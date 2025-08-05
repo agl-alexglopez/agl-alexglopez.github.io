@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Home
+title: agl-alexglopez
 ---
 
-# Open Source Learnings
+## Open Source Learnings
 
-This blog is a documentation of valuable lessons I have learned and new ideas I am exploring related to programming, algorithms, data structure design, operating systems, compilers, and likely many more topics in the future. The site and its posts aim to be minimal in design, free from distractions, and full of information. 
+This blog is a documentation of valuable lessons I have learned and new ideas I am exploring related to programming, algorithms, data structure design, operating systems, compilers, and many more topics as they interest me. The site and its posts aim to be minimal in design, free from distractions, and full of useful information. 
 
 Please check out any posts below that interest you.
 
