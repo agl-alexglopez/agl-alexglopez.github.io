@@ -66,7 +66,7 @@ Put up drywall then tape and mud it.
 
 ![drywall](/assets/images/drywall.jpg)
 
-Prime, paint, then put in your floors.
+Prime the walls with two coats and then paint with three coats. Expose the old hardwood underneath all the carpet glue and patch areas that are too far gone.
 
 ![finish1](/assets/images/finish1.jpg)
 ![finish2](/assets/images/finish2.jpg)
