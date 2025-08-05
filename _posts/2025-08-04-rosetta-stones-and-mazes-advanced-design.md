@@ -186,7 +186,7 @@ The maze builders now have no interaction with system level IO calls. They are o
 - We can play the building and solving in reverse.
 - We can easily remember which solver threads were on any square at any point in time. This gives insight into how the locking code and threading library scheduled threads.
 - We can step through the algorithms one `Delta` at a time, freely toggling forward and backward at will.
-- We can render maze changes as quickly or as slowly as we wish, separate from the frame rate of our terminal.
+- We can render maze changes as quickly or as slowly as we wish.
 
 Our next task is to figure out the render loop.
 
@@ -227,7 +227,13 @@ impl EventHandler {
         thread::spawn(move || {
             let mut last_delta = Instant::now();
             loop {
-                if event::poll(MIN_POLL).expect("poll error") {
+                let elapsed = last_delta.elapsed();
+                let timeout = if deltas > elapsed {
+                    deltas.saturating_sub(elapsed)
+                } else {
+                    Duration::ZERO
+                };
+                if event::poll(timeout).expect("polling error") {
                     match event::read().expect("event error") {
                         CtEvent::Key(e) => {
                             send_key_press(e);
@@ -237,7 +243,7 @@ impl EventHandler {
                         }
                         _ => {}
                     }
-                } else if last_delta.elapsed() >= deltas {
+                } else {
                     sender.send(Pack::Render).expect("delta error");
                     last_delta = Instant::now();
                 }
@@ -257,6 +263,8 @@ I have cut out some code and shortened things to make the core logic clearer. Th
 1. The loop monitors for key presses. Because this is immediate mode rendering, the internal maze render code will have to change the functions it calls on each loop to display what is needed based on user input.
 2. We have an adjustable speed for rendering the pace of maze changes. The user can send key presses that speed up or slow down the `deltas` duration. If enough time has passed we send a signal to the maze rendering code to update the maze squares as specified in the playback `Tape` we make during building and solving.
 
+This is still not a traditional video game physics style rendering loop. We don't render at the maximum frame rate the terminal allows, or even a 30-60 FPS target. I don't currently see the need to consume the user's CPU resources in such a way at this time. We want the user to simply observe and step through algorithms one step at a time. Very few squares on the screen change with every update, so rendering the entire frame many times per second is wasteful. 
+ 
 Finally, this allows the internal `render_maze` loop to only worry about rendering a frame when told to do so.
 
 ```rust
