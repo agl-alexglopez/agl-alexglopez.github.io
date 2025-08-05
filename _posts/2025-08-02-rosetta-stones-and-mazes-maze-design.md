@@ -45,7 +45,7 @@ Recall the language feature hit and miss table from the previous post in this se
 |                        | Multidimensional Arrays    |
 |                        | Fun!                       |
 
-This referred to the features a word counting program hit and missed as a “Rosetta Stone” candidate. Let's convert it to just a hit table and we will fill in how we hit all of these points as we go through the series. This article hits the following points.
+This referred to the features a word counting program hit and missed as a “Rosetta Stone” candidate. Let's convert it to just a hit table, and we will fill in how we hit all of these points as we go through the series. This article hits the following points.
 
 | Hit                        | How                                                 |
 | -------------------------- | --------------------------------------------------- |
@@ -119,7 +119,7 @@ While traditionally intended to help create clean terminal user interfaces, box-
 ─  │  ┌  ┐  └  ┘  ├  ┤  ┬  ┴  ┼  ╴  ╵  ╶  ╷
 ```
 
-Maybe you already have a vision for how these pieces could fit together to form a maze. We have lines, corners, and intersections. Just as a test, lets redo our ASCII maze with these pieces.
+Maybe you already have a vision for how these pieces could fit together to create a maze. We have lines, corners, and intersections. Just as a test, let's redo our ASCII maze with these pieces.
 
 ```txt
 ┌───────┬───┐
@@ -162,9 +162,24 @@ If we count our bits in this diagram starting from right at 0 to left at 31, [re
 
 The [bit twiddling](https://graphics.stanford.edu/~seander/bithacks.html) readers may already see where this is going, but if we count the number of box-drawing characters we have we see there are 15. Let's add a character that will represent a wall that has no other walls around it to bring that count up to **16**. The number 16 is significant because that is how many values can be represented with 4 bits, if we include 0.
 
-|0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|
-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
-|■|─|│|┌|┐|└|┘|├|┤|┬|┴|┼|╴|╵|╶|╷|
+| Index | Character |
+| ----- | --------- |
+| 0     | ■         |
+| 1     | ─         |
+| 2     | │         |
+| 3     | ┌         |
+| 4     | ┐         |
+| 5     | └         |
+| 6     | ┘         |
+| 7     | ├         |
+| 8     | ┤         |
+| 9     | ┬         |
+| 10    | ┴         |
+| 11    | ┼         |
+| 12    | ╴         |
+| 13    | ╵         |
+| 14    | ╶         |
+| 15    | ╷         |
 
 If the `Square` is a wall it will be responsible for telling us if another wall exists in the neighboring cell to the **North**, **East**, **South**, or **West**. In fact, let's help our `WallLine` out by making those cardinal directions constants.
 
