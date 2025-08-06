@@ -240,11 +240,11 @@ The final detail we need to manage is how multiple threads can leave their color
 
 ![tetrad](/assets/images/tetrad.png)
 
-A Tetradic color scheme is one in which four colors compliments one another by sharing a 90 or 180 degree relationship between one another. This effectively forms a rectangle, and sometimes a square, of colors that balance and complement each other well.
+A Tetradic color scheme is one in which four colors compliment one another by sharing a 90 or 180 degree relationship between one another. This effectively forms a rectangle of colors that balance and complement each other well.
 
-Because we have 24 bits, and 4 threads, we must choose four RGB colors with an interesting property: **the colors cannot have any bits that overlap**. Some maze solving algorithms use backtracking, so when a thread backtracks and removes its color from a square, representing its path, we must clean up its bits. 
+Because we have 24 bits, and 4 threads, we must choose four RGB colors with an interesting property: **the colors cannot have any bits that overlap**. Some maze solving algorithms use backtracking, so when a thread backtracks and removes its color from a square, representing its path, we must clean up its bits. This is a case where we need [idempotence](https://en.wikipedia.org/wiki/Idempotence); we can't have side effects and the effect of stamping a color or removing a color must be the same if applied multiple times, regardless of the presence of other color stamps at the square.
 
-In other words, if four threads have visited a square, and we only care about their colors, the result is as follows.
+If four threads have visited a square, and we only care about their colors, the result is as follows.
 
 ```rust
 let square = COLOR_1 | COLOR_2 | COLOR_3 | COLOR_4;
@@ -259,7 +259,7 @@ assert!((square & !COLOR_3) == (COLOR_1 | COLOR_2 | COLOR_4));
 assert!((square & !COLOR_4) == (COLOR_1 | COLOR_2 | COLOR_3));
 ```
 
-When removing any color all remaining colors must remain unaffected. This is a hard problem! I was stuck for a while until I asked an embarrassingly down-voted [StackOverflow](https://stackoverflow.com/questions/77441620/how-do-i-find-4-complementary-24bit-rgb-colors-with-no-overlapping-bits) question and a kind soul helped me find four colors that satisfy this property.
+When removing any color all remaining colors must remain unaffected. It is easy to come up with random color values with this property, but hard to come up with four colors that look good and are visually distinct. I was stuck for a while until I asked an embarrassingly down-voted [StackOverflow](https://stackoverflow.com/questions/77441620/how-do-i-find-4-complementary-24bit-rgb-colors-with-no-overlapping-bits) question and a kind soul helped me find four colors that satisfy this property.
 
 ```rust
 // Credit to Caesar on StackOverflow for writing 
@@ -269,9 +269,9 @@ pub const THREAD_MASKS: [maze::Square; 4] = [
 ];
 ```
 
-Now there are four unique colors that will mix creating 15 possible unique colors depending upon the number of threads that visit a square. As an added bonus the more threads that visit a square the brighter the colors get which acts as a kind of heat map of thread activity.
+Now there are four unique colors that will mix creating 15 possible unique colors depending upon the number of threads that visit a square. As an added bonus, the more threads that visit a square the brighter the colors get which acts as a kind of heat map of thread activity.
 
-I went to all of this trouble because using 24-bit color allows us to specify the exact color that should appear on solving paths regardless of any terminal or shell style settings we may have on our computers.
+I went to all of this trouble because using 24-bit color allows us to specify the exact color that should appear on solving paths regardless of any terminal style settings we may have on our computers.
 
 ## Conclusion 
 
