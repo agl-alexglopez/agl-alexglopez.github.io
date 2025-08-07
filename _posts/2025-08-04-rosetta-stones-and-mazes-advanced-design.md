@@ -21,6 +21,8 @@ By the end of this post, readers will
 
 ## Checklist
 
+This post completes our running checklist across the entries in the Rosetta Stone series.
+
 | Hit                        | How                                                                                                                                                                                                             |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Basic Control Flow         | Sequentially building a maze and solving it.                                                                                                                                                                    |
@@ -120,7 +122,7 @@ If you instead choose to render the entire maze as frequently as your terminal a
 Let's take a step back and separate the logic and algorithms we use to build and solve mazes from our desire to show this process on the screen. If you have followed my design cues through this series, then we know two things.
 
 1. Our representation of maze squares is extremely compact (16-32 bits, depending on your approach).
-2. Every operation we perform on our bits for the building or solving process is [idempotent](https://en.wikipedia.org/wiki/Idempotence). We add bits via a logical OR operation and removing bits with the logical AND operation using the inverse of the bits of interest. These operations can be applied multiple times with no inconvenient side effects. We even ensured that the 24-bit colors we used for multiple threads have this idempotence.
+2. Every operation we perform on our bits for the building or solving process is [idempotent](https://en.wikipedia.org/wiki/Idempotence). We add bits via a logical OR operation and remove bits with the logical AND operation using the inverse of the bits of interest. These operations can be applied multiple times with no inconvenient side effects. We even ensured that the 24-bit colors we used for multiple threads have this idempotence.
 
 This allows us to get more creative with how we build and solve the maze versus how we display it. The key insight is as follows. 
 
