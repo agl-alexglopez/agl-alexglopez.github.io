@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The Pokémon Exact Cover Problem
+title: The Pokémon Graph Cover Problem
 date: 2025-08-07
 ---
 ## Prerequisites
