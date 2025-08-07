@@ -9,6 +9,9 @@ This blog is a documentation of valuable lessons I have learned and new ideas I 
 
 Please check out any posts below that interest you.
 
+## Corrections
+
+I aim to present correct information in my posts. If you notice any errors, or are otherwise compelled to improve a post, please feel free to submit an issue at the [repository for this site](https://github.com/agl-alexglopez/agl-alexglopez.github.io).  
 
 ## Posts
 

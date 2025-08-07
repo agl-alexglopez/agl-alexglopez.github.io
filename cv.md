@@ -37,4 +37,4 @@ While playing NCAA D3 Lacrosse, eventually leading the team as Senior Captain, I
 
 I coached the Colombia Men's lacrosse team in Bogotá during the summer before their 2014 World Lacrosse Men's Championship debut. 
 
-During all four years playing Kenyon Men's Lacrosse, I was given All Conference recognition with awards including Honorable Mention, Second-Team (2x), and First-Team.
+During my time for Kenyon Lacrosse, I received NCAC All-Conference awards including Honorable Mention, Second-Team (2x), and First-Team.

@@ -24,7 +24,7 @@ body {
   font-feature-settings: 'calt' 1, 'ss01' 1, 'ss02' 1; 
   /* here MONO axis stays at its default (0) → proportional letters */
   line-height: 1.6;
-  max-width: 38em;
+  max-width: 64ch;
   margin: 2em auto;
   padding: 0 1em;
   color: #111;
