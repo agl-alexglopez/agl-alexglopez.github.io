@@ -349,6 +349,6 @@ Let's briefly discuss some directions you could take this program if you really 
 
 - Use a graphics library to create a window for your maze rather than using the built-in terminal. I think I will be trying this for the [Zig](https://ziglang.org/) programming language. This will also require incorporation of a 3rd party library.
 - Bring the maze into three dimensions. You might try a graphics framework in your language, but a [terminal is capable of 3D rendering](https://github.com/leonmavr/retrocube), believe it or not.
-- Make the maze an interactive game or race between players over a network. Start up to four players in the four corners of the maze and have them race to the center. This will hit on networking, a language feature that this program did not hit, unfortunately.
+- Make the maze an interactive game or race between players over a network. Start up to four players in the four corners of the maze and have them race to the center. This will hit on networking, a language feature that this series was unable to hit.
 
 I hope you consider using a maze building program the next time you want to learn a programming language. It is easy to feel pressure to produce something “productive” or something that creates “user-value” every time you spend personal time programming. However, I firmly believe it is essential to find time to remember how fun and entertaining programming can be just for **you**. Mazes can help make learning a joy, rather than a chore.
