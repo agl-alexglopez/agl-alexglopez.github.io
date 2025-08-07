@@ -27,7 +27,7 @@ I built my foundational knowledge of algorithms and data structures. After gaini
 
 ## Stanford University Master's in Education (2018)
 
-I gained valuable knowledge in the fields of childhood development, curriculum, and instruction strategies for equity and engagement, and leadership skills applicable to any setting. After this intensive one-year Master's program I graduated with my preliminary teaching credential in English.
+I gained valuable knowledge in the fields of childhood development, curriculum, and instruction strategies for equity and engagement, and leadership skills applicable to any setting. After this intensive one-year Master's program, I graduated with my preliminary teaching credential in English.
 
 ## Kenyon College Bachelor of Arts in English (2017)
 
