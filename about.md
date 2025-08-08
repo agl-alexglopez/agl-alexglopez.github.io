@@ -42,33 +42,3 @@ I said I enjoy learning things unrelated to typing words on a screen. Building a
 
 This is the [Discipline V2](https://github.com/coseyfannitutti/discipline) a DIY mechanical keyboard that requires you solder all switches, resistors, chip, etc., onto the PCB yourself. I used it to learn how to solder. The switches are Zeal Tealio Linear Switches. I am still backlogged on some keyboard builds. I will perhaps post some updates if the builds turn out particularly nice.
 
-### Room
-
-I enjoy some DIY projects around the house. Here, is my free, expert-level guide to remodeling a room (full disclosure I am not actually an expert).
-
-Start with an ugly room.
-
-![ugly1](/assets/images/ugly1.png)
-![ugly2](/assets/images/ugly2.png)
-
-Rip out the carpet, closet, walls, and ceilings. Run some Ethernet cables from your router closet down through the basement into this room while everything is ripped out.
-
-![demolish1](/assets/images/demolish1.jpg)
-![demolish2](/assets/images/demolish2.jpg)
-![demolish3](/assets/images/demolish3.jpg)
-
-Put in the insulation that was, of course, missing.
-
-![insulation1](/assets/images/insulation1.jpg)
-![insulation2](/assets/images/insulation2.jpg)
-
-Put up drywall then tape and mud it.
-
-![drywall](/assets/images/drywall.jpg)
-
-Prime the walls with two coats and then paint with three coats. Expose the old hardwood underneath all the carpet glue and patch areas that are too far gone.
-
-![finish1](/assets/images/finish1.jpg)
-![finish2](/assets/images/finish2.jpg)
-
-Learn Ethernet wiring diagrams so you can make ports in the room. Tidy up. Now you have a room that is not ugly, a room with more space, and a room with Ethernet ports.
