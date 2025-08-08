@@ -186,17 +186,11 @@ struct Type_name
 };
 std::vector<typeName> headers = {
     {"",6,1},	
-
     {"Electric",0,2},
-
     {"Fire",1,3},
-
     {"Grass",2,4},
-
     {"Ice",3,5},
-
     {"Normal",4,6},
-
     {"Water",5,0},
 };
 ```
