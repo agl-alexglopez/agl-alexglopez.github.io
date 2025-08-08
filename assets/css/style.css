@@ -1,15 +1,10 @@
 /*───────────────────────────────────────────────────────────
-  1. Load Monaspace Neon as a variable font for proportional use
+  Load Monaspace Neon as a variable font for proportional use
 ───────────────────────────────────────────────────────────*/
 @font-face {
-  font-family: 'Monaspace Neon';
+  font-family: 'Monaspace Neon Var';
   src: url('/assets/fonts/MonaspaceNeonVarVF.woff2') format('woff2'),
        url('/assets/fonts/MonaspaceNeonVarVF.woff')  format('woff');
-  /*  
-    This is the variable‐width cut:  
-    – MONO axis = 0 (proportional) by default  
-    – Supports full weight/stretch/slant ranges  
-  */
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -17,12 +12,11 @@
 }
 
 /*───────────────────────────────────
-  2. Base typography for your site
+  Base typography
 ────────────────────────────────────*/
 body {
-  font-family: 'Monaspace Neon Var', 'Monospace Neon', 'Inter', sans-serif;
+  font-family: 'Monaspace Neon Var', 'Inter', sans-serif;
   font-feature-settings: 'calt' 1, 'ss01' 1, 'ss02' 1; 
-  /* here MONO axis stays at its default (0) → proportional letters */
   line-height: 1.6;
   max-width: 64ch;
   margin: 2em auto;
@@ -31,12 +25,12 @@ body {
 }
 
 h1, h2, h3, h4 {
-  font-weight: 600; /* picks a bolder instance from the variable font */
+  font-weight: 600;
   margin-top: 1.5em;
 }
 
 /*──────────────────────────────────────────────────
-  3. Blockquotes, images, tables — structural elements
+  Blockquotes, images, tables — structural elements
 ───────────────────────────────────────────────────*/
 blockquote {
   background-color: #f8f8f8;
@@ -68,12 +62,10 @@ th, td {
 }
 
 /*─────────────────────────────────────────
-  4. Code blocks & inline code (monospace)
+  Code blocks & inline code (monospace)
 ──────────────────────────────────────────*/
 pre, code {
-  /* switch MONO axis to 1 → true monospaced grid */
-  font-family: 'Monaspace Neon', ui-monospace, monospace;
-  /* enable contextual alternates for box-drawing smoothing */
+  font-family: 'Monaspace Neon Var', ui-monospace, monospace;
   font-feature-settings: 'calt' 1, 'ss01' 1, 'ss02' 1; 
   font-variation-settings: 'MONO' 1;
 }
@@ -84,7 +76,7 @@ pre {
   padding: 0.75em;
   overflow-x: auto;
   border-radius: 4px;
-  line-height: 1;         /* tight, for accurate box-drawing */
+  line-height: 1;
 }
 
 /* inline code */
@@ -96,7 +88,7 @@ p code {
 }
 
 /*─────────────────────────────────────────
-  5. Series-post navigation styling
+  Series-post navigation styling
 ──────────────────────────────────────────*/
 .series-nav {
   display: flex;
