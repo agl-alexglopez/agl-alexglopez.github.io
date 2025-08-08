@@ -359,9 +359,11 @@ If a user wants to membership test an item or option, we can make some guarantee
 
 ```c++
 namespace Dancing_links{
+
 [[nodiscard]] bool has_item(Type_encoding item) const;
 
 [[nodiscard]] bool has_option(Type_encoding option) const;
+
 }
 ```
 
@@ -374,6 +376,7 @@ As a part of Algorithm X via Dancing Links, covering items is central to the pro
 
 ```c++
 namespace Dancing_links {
+
 void hide_item(uint64_t header_index);
 
 bool hide_items(Pokemon_links &dlx,
@@ -385,6 +388,7 @@ bool hide_items(Pokemon_links &dlx,
 
 void hide_items_except(Pokemon_links &dlx,
                        const std::set<Type_encoding> &to_keep);
+
 }
 ```
 
@@ -401,6 +405,7 @@ To track the order, I use a stack and offer the user stack-like operations that 
 
 ```c++
 namespace Dancing_links {
+
 uint64_t num_hid_items(const Pokemon_links &dlx);
 
 Type_encoding peek_hid_item(const Pokemon_links &dlx);
@@ -410,7 +415,9 @@ void pop_hid_item(Pokemon_links &dlx);
 bool hid_items_empty(const Pokemon_links &dlx);
 
 std::vector<Type_encoding> hid_items(const Pokemon_links &dlx);
+
 void reset_items(Pokemon_links &dlx);
+
 }
 ```
 
@@ -427,6 +434,7 @@ We will also use a stack to manage hidden options. Here, however, the stack is r
 
 ```c++
 namespace Dancing_links {
+
 bool hide_option(Pokemon_links &dlx, Type_encoding to_hide);
 
 bool hide_options(Pokemon_links &dlx, 
@@ -438,6 +446,7 @@ bool hide_options(Pokemon_links &dlx,
 
 void hide_options_except(Pokemon_links &dlx, 
                          const std::set<Type_encoding> &to_keep);
+
 }
 ```
 
@@ -452,6 +461,7 @@ Here are the same stack utilities for the option version of these operations.
 
 ```c++
 namespace Dancing_links {
+
 uint64_t num_hid_options(const Pokemon_links &dlx);
 
 Type_encoding peek_hid_option(const Pokemon_links &dlx);
@@ -461,7 +471,9 @@ void pop_hid_option(Pokemon_links &dlx);
 bool hid_options_empty(const Pokemon_links &dlx);
 
 std::vector<Type_encoding> hid_options(const Pokemon_links &dlx);
+
 void reset_options(Pokemon_links &dlx);
+
 }
 ```
 
@@ -475,6 +487,7 @@ With the hiding and un-hiding logic in place you now have a complete set of oper
 
 ```c++
 namespace Dancing_links {
+
 std::set<Ranked_set<Type_encoding>> exact_cover_functional(Pokemon_links &dlx, 
                                                            int choice_limit);
 
@@ -486,6 +499,7 @@ overlapping_cover_functional(Pokemon_links &dlx, int choice_limit);
 
 std::set<Ranked_set<Type_encoding>> overlapping_cover_stack(Pokemon_links &dlx, 
                                                             int choice_limit);
+
 }
 ```
 
