@@ -15,9 +15,9 @@ The field of Operating Systems is a great combination of managing this implement
 Given my own free time I would prefer to work on projects in the following languages, ranked by preference, with 1 being my favorite.
 
 1. C
-2. Zig
+2. C++
 3. Rust
-4. C++
+4. Zig
 5. Python
 
 As a result, you will find me giving inordinate amounts of free time to my projects like [str_view](https://github.com/agl-alexglopez/str_view) and the [C Container Collection](https://github.com/agl-alexglopez/ccc), even if no one is watching. The latter project is the first stage in my preparation for building an educational Operating System in the style of [PintOS](https://web.stanford.edu/class/cs140/projects/pintos/pintos_1.html#SEC1) or [xv6](https://github.com/mit-pdos/xv6-riscv). Stay tuned for posts about the process of building this system.
