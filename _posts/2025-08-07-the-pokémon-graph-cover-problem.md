@@ -513,4 +513,6 @@ Treating the `Pokemon_links` as an alterable object with a prolonged lifetime ca
 
 I hope you enjoyed this deep dive on how to apply Donald Knuth's Dancing Links solver to Pokémon teams. I found it tremendously satisfying to abstract a beloved childhood game of mine into a form that was solvable by an algorithm I found interesting. 
 
+For another perspective on the directed graph that is the Pokémon type advantage network, see this great video by creator Not David, [“The Pokemon Type Advantage Network”](https://www.youtube.com/watch?v=4TevYag6P-0). This video helped me start thinking about different ways to model the type interactions in these games.
+
 For the full implementation of this project that solves the cover problems we discussed, across nine Pokémon generations, please visit my [GitHub repository](https://github.com/agl-alexglopez/dancing-links-and-planning-pokemon/tree/main).
