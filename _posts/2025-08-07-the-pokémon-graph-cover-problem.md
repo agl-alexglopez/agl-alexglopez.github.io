@@ -173,6 +173,14 @@ Here are the results of those choices.
 
 There are a few other **overlapping** covers within this example if you want to try finding your own to solidify the concepts. You could also try the Attack version, which operates under the exact same principles.
 
+### Visualizing a Solution
+
+While drawing out the grid is helpful to test and debug solutions, at its heart dancing links is a graph cover problem. So, we should visualize the solution as a graph, like this.
+
+![pokemon-gui.png](/assets/images/pokemon-gui.png)
+
+The inner ring of such a visualization can indicate the options we selected to cover the necessary items, which surround the inner ring. Many helpful visualization techniques open up if we decide to display the results in a GUI. For example, the color of the lines indicate the multiplier that each attack type in the inner ring of this example has against the defensive types they cover. For more information, please visit the [dancing-links-and-planning-pokemon](https://github.com/agl-alexglopez/dancing-links-and-planning-pokemon) repository and use the GUI program I wrote to display solutions. Continue reading for more low level implementation details.
+
 ### Pokémon Planning Implementation
 
 In order to accomplish the in-place, no-copy recursion that comes with Knuth's Dancing Links, I have chosen to use a C++ vector. In older implementations of Dancing Links, Knuth used a 4-way linked grid of nodes with up, down, left, and right fields. Now, the left-right fields of these nodes can be implicit because we place everything in one vector.
