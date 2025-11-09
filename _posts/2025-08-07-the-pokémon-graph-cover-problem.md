@@ -179,6 +179,8 @@ While drawing out the grid is helpful to test and debug solutions, at its heart 
 
 ![pokemon-gui.png](/assets/images/pokemon-gui.png)
 
+To jump right in to the demo check out the [web app demo powered by raylib and Emscripten](https://agl-alexglopez.github.io/dancing-links-and-planning-pokemon/) (for the best experience disable mouse lock, enable resizing, and go full screen). Or, visit the repository to build the desktop app locally.
+
 The inner ring of such a visualization can indicate the options we selected to cover the necessary items, which surround the inner ring. Many helpful visualization techniques open up if we decide to display the results in a GUI. For example, the color of the lines indicate the multiplier that each attack type in the inner ring of this example has against the defensive types they cover. For more information, please visit the [dancing-links-and-planning-pokemon](https://github.com/agl-alexglopez/dancing-links-and-planning-pokemon) repository and use the GUI program I wrote to display solutions. Continue reading for more low level implementation details.
 
 ### Pokémon Planning Implementation
