@@ -196,7 +196,7 @@ struct Type_name
     uint64_t left;
     uint64_t right;
 };
-std::vector<typeName> headers = {
+std::vector<Type_name> headers = {
     {"",6,1},	
     {"Electric",0,2},
     {"Fire",1,3},
@@ -500,17 +500,17 @@ With the hiding and un-hiding logic in place you now have a complete set of oper
 ```c++
 namespace Dancing_links {
 
-std::set<Ranked_set<Type_encoding>> exact_cover_functional(Pokemon_links &dlx, 
+std::set<Ranked_set<Type_encoding>> exact_covers_recursive(Pokemon_links &dlx, 
                                                            int choice_limit);
 
-std::set<Ranked_set<Type_encoding>> exact_cover_stack(Pokemon_links &dlx, 
-                                                      int choice_limit);
+std::set<Ranked_set<Type_encoding>> exact_covers_stack(Pokemon_links &dlx, 
+                                                       int choice_limit);
 
 std::set<Ranked_set<Type_encoding>> 
-overlapping_cover_functional(Pokemon_links &dlx, int choice_limit);
+overlapping_covers_recursive(Pokemon_links &dlx, int choice_limit);
 
-std::set<Ranked_set<Type_encoding>> overlapping_cover_stack(Pokemon_links &dlx, 
-                                                            int choice_limit);
+std::set<Ranked_set<Type_encoding>> overlapping_covers_stack(Pokemon_links &dlx, 
+                                                             int choice_limit);
 
 }
 ```
