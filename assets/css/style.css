@@ -1,10 +1,9 @@
 /*───────────────────────────────────────────────────────────
-  Load Monaspace Neon as a variable font for proportional use
+  Load font as a variable font for proportional use
 ───────────────────────────────────────────────────────────*/
 @font-face {
-  font-family: 'Monaspace Neon Var';
-  src: url('/assets/fonts/MonaspaceNeonVarVF.woff2') format('woff2'),
-       url('/assets/fonts/MonaspaceNeonVarVF.woff')  format('woff');
+  font-family: 'Atkinson Hyperlegible VF';
+  src: url('/assets/fonts/AtkinsonHyperlegibleNextVF-Variable.woff2') format('woff2');
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -15,8 +14,7 @@
   Base typography
 ────────────────────────────────────*/
 body {
-  font-family: 'Monaspace Neon Var', 'Inter', sans-serif;
-  font-feature-settings: 'calt' 1, 'ss01' 1, 'ss02' 1; 
+  font-family: 'Atkinson Hyperlegible VF', 'Inter', sans-serif;
   line-height: 1.6;
   max-width: 64ch;
   margin: 2em auto;
@@ -65,9 +63,7 @@ th, td {
   Code blocks & inline code (monospace)
 ──────────────────────────────────────────*/
 pre, code {
-  font-family: 'Monaspace Neon Var', ui-monospace, monospace;
-  font-feature-settings: 'calt' 1, 'ss01' 1, 'ss02' 1; 
-  font-variation-settings: 'MONO' 1;
+  font-family: 'Atkinson Hyperlegible Mono', ui-monospace, monospace;
 }
 
 /* block code */
