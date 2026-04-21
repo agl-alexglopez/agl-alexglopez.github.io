@@ -195,35 +195,20 @@ Notice that each of these constants has exactly one bit on; one bit for one of t
 ```rust
 pub static WALLS: [char; 16] = [
     '■', // 0b0000 walls do not exist around me
-
     '╵', // 0b0001 wall North
-
     '╶', // 0b0010 wall East 
-
     '└', // 0b0011 wall North and East
-
     '╷', // 0b0100 wall South 
-
     '│', // 0b0101 wall North and South 
-
     '┌', // 0b0110 wall East and South
-
     '├', // 0b0111 wall North, East, and South
-
     '╴', // 0b1000 wall West 
-
     '┘', // 0b1001 wall North and West
-
     '─', // 0b1010 wall East and West 
-
     '┴', // 0b1011 wall North, East, and West
-
     '┐', // 0b1100 wall South and West.
-
     '┤', // 0b1101 wall North, South, and West
-
     '┬', // 0b1110 wall East, South, and West
-
     '┼', // 0b1111 wall North, East, South, and West.
 ];
 ```
