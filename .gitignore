@@ -7,3 +7,5 @@ vendor/
 .obsidian/
 .trash/
 .vimrc
+
+.DS_Store
